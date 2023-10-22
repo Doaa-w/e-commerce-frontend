@@ -1,11 +1,11 @@
-import { ProductsManager } from './components/ProductsManager'
 import './App.css'
+import Home from './Pages/Home'
+import RouterMain from './Router/RouterMain'
 
 function App() {
   return (
     <div className="App">
-      <h1>Vite + React + Toolkit + Tailwind</h1>
-      <ProductsManager />
+      <RouterMain />
     </div>
   )
 }

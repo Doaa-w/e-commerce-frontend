@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import { ChangeEvent, FormEvent } from 'react'
-import { Product } from '../redux/slices/products/productSlice'
+import { Product } from '../Types'
 
 type ProductFormProps = {
   product: Product

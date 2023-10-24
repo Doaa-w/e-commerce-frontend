@@ -14,7 +14,7 @@ import api from '../api'
 export function ProductsManager() {
   const dispatch = useDispatch<AppDispatch>()
   const state = useSelector((state: RootState) => state)
-  const products = state.products
+  const products = state.productsR
 
   useEffect(() => {
     handleGetProducts()
@@ -40,7 +40,7 @@ export function ProductsManager() {
       {products.isLoading && <h3> Loading products...</h3>}
       <div className="card grid gap-4">
         <ul>
-          {products.items.map((product) => (
+          {products.products.map((product) => (
             <li key={product.id} className="flex items-center gap-4 text-2xl mb-2">
               <img src={product.image} alt={product.name} width="50" />
               <span>{product.name}</span>

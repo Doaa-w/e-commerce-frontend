@@ -4,7 +4,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "email": "john.doe@example.com",
-    "password": "hashed_password",
+    "password": "1234",
     "role": "admin"
   },
   {

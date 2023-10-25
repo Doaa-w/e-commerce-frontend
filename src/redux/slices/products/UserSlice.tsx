@@ -11,7 +11,7 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
     return response.data
     })
 
-    const data = localStorage.getItem('loginData') != null ? 
+    const data = localStorage.getItem('loginData') !== null ? 
     JSON.parse(String(localStorage.getItem('loginData'))) :[]
 
     const initialState :UsersState = {
@@ -33,9 +33,13 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
         userData:state.userData
       }))
     },
-    logout :(state)=>{
+    logout :(state , action)=>{
       state.isLoggedIn=false
-      state.userData=null
+      state.userData=action.payload
+      localStorage.setItem('loginData', JSON.stringify({
+        isLoggedIn : state.isLoggedIn ,
+        userData:state.userData
+      }))
     }
   },
   extraReducers:(builder) =>{

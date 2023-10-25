@@ -1,9 +1,4 @@
 /* eslint-disable prettier/prettier */
-// import { ThunkDispatch } from "@reduxjs/toolkit"
-// import {  fetchProducts } from "./redux/slices/products/productSlice"
-// import { RootState } from "./redux/store"
-
-/* eslint-disable prettier/prettier */
 export type Product = {
     id: number
     name: string

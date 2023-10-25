@@ -16,7 +16,7 @@ const SingleProduct =() =>{
 
     useEffect(()=>{
     dispatch(findProduct(Number(id)));
-    },[id])
+    },[dispatch , id])
 
     if(isLoading){
         return <p> loading the Data now ..</p>

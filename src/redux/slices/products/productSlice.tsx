@@ -9,10 +9,6 @@ const response = await api.get('/mock/e-commerce/products.json')
 return response.data
 })
 
-// export const fetchProduct = createAsyncThunk('products/fetchProduct' , async () => {
-//   const response = await api.get('/mock/e-commerce/products.json/${id}')
-//   return response.data
-//   })
 
 const initialState: ProductState = {
   products: [],
@@ -82,18 +78,6 @@ export const productsReducer = createSlice({
       state.isLoading=false;
       state.error= "error we can not fech Data";
     }) 
-    // .addCase(fetchProduct.pending,(state)=>{
-    //   state.isLoading=true;
-    // })
-    // .addCase(fetchProduct.fulfilled,(state,action)=>{
-    //   state.Product = action.payload
-    //   state.isLoading = false
-      
-    // })
-    // .addCase(fetchProduct.rejected,(state)=>{
-    //   state.isLoading=false;
-    //   state.error= "error we can not fech Data";
-    // })
   }
   }
 

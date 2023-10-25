@@ -1,18 +1,19 @@
 /* eslint-disable prettier/prettier */
 import { useDispatch, useSelector } from 'react-redux';
-import {Link, Navigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { AppDispatch, RootState } from '../redux/store';
-import { logout } from '../redux/slices/products/UserSlice';
+import {logout } from '../redux/slices/products/UserSlice';
 
 const NavBar = () => {
 
-    const {isLoggedIn ,userData}= useSelector((state:RootState) => state.usersR)
+    const {isLoggedIn }= useSelector((state:RootState) => state.usersR)
     const dispatch =useDispatch<AppDispatch> ();
+    const navigate= useNavigate()
 
     const handelLogout= () =>{
-        dispatch(logout())
-        // Navigate('/')
-    }
+        dispatch(logout(logout))
+        navigate('/Login')
+     } 
     return (
         <div className='nav' >
             <ul>

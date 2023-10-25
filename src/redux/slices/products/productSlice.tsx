@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { ProductState } from '../../../Types'
+import { Product, ProductState } from '../../../Types'
 import api from '../../../api'
 
 
@@ -9,18 +9,32 @@ const response = await api.get('/mock/e-commerce/products.json')
 return response.data
 })
 
+// export const fetchProduct = createAsyncThunk('products/fetchProduct' , async () => {
+//   const response = await api.get('/mock/e-commerce/products.json/${id}')
+//   return response.data
+//   })
+
 const initialState: ProductState = {
   products: [],
+  Product:[],
   error: null,
   isLoading: false,
   searchTerm: ' ',
-  SingleProduct :null
+  SingleProduct :{} as Product
 }
 
 export const productsReducer = createSlice({
-  name: 'products',
+  name: 'product',
   initialState,
   reducers: {
+    findProduct: (state,action)=>{
+      const id = action.payload
+      const foundProduct = state.products.find((product)=>product.id === id)
+      if(foundProduct){
+        state.SingleProduct = foundProduct
+      }
+
+    },
 
     searchProduct:(state , action) =>{
       state.searchTerm = action.payload
@@ -68,10 +82,22 @@ export const productsReducer = createSlice({
       state.isLoading=false;
       state.error= "error we can not fech Data";
     }) 
+    // .addCase(fetchProduct.pending,(state)=>{
+    //   state.isLoading=true;
+    // })
+    // .addCase(fetchProduct.fulfilled,(state,action)=>{
+    //   state.Product = action.payload
+    //   state.isLoading = false
+      
+    // })
+    // .addCase(fetchProduct.rejected,(state)=>{
+    //   state.isLoading=false;
+    //   state.error= "error we can not fech Data";
+    // })
   }
   }
 
 )
   
-export const {productsRequest,productsSuccess,addProduct,removeProduct, searchProduct ,sortProducts} = productsReducer.actions
+export const {productsRequest,productsSuccess,addProduct,removeProduct, searchProduct ,sortProducts , findProduct} = productsReducer.actions
 export default productsReducer.reducer

@@ -1,4 +1,9 @@
 /* eslint-disable prettier/prettier */
+// import { ThunkDispatch } from "@reduxjs/toolkit"
+// import {  fetchProducts } from "./redux/slices/products/productSlice"
+// import { RootState } from "./redux/store"
+
+/* eslint-disable prettier/prettier */
 export type Product = {
     id: number
     name: string
@@ -12,10 +17,11 @@ export type Product = {
   
   export type ProductState = {
     products: Product[]
+    Product:[]
     error: null | string
     isLoading: boolean
     searchTerm: string
-    SingleProduct:string|null
+    SingleProduct:Product
 }
 export type CategoryState= {
 categories:Category[]
@@ -42,12 +48,28 @@ export type UsersState ={
   error:null|string
   isLoading:boolean
   isLoggedIn:boolean
-  isLoggedOut:boolean
   userData:User |null
 }
 
-export type searchProduct={
+ export type searchProduct={
   payload: number;
   type: "products/searchProduct";
   
 }
+// type fetchProductsPending=ReturnType<typeof fetchProducts.pending>;
+// type fetchProductsfulfilled=ReturnType<typeof fetchProducts.fulfilled>;
+// type fetchProductsRejected=ReturnType<typeof fetchProducts.rejected>;
+
+// type fetchProductPending=ReturnType<typeof fetchProduct.pending>;
+// type fetchProductfulfilled=ReturnType<typeof fetchProduct.fulfilled>;
+// type fetchProductRejected=ReturnType<typeof fetchProduct.rejected>;
+
+// export type productsActions=
+// |fetchProductsPending
+// |fetchProductsfulfilled
+// |fetchProductsRejected
+// |fetchProductPending
+// |fetchProductfulfilled
+// |fetchProductRejected
+
+// export type AppsDispatch= ThunkDispatch<RootState,void,productsActions>

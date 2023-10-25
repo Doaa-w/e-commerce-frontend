@@ -5,20 +5,22 @@ import {  UsersState } from '../../../Types'
 
 
 
+
 export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () => {
     const response = await api.get('/mock/e-commerce/users.json')
     return response.data
     })
-    
+
+    const data = localStorage.getItem('loginData') != null ? 
+    JSON.parse(String(localStorage.getItem('loginData'))) :[]
+
     const initialState :UsersState = {
       users: [],
       error: null,
       isLoading: false,
-      isLoggedIn:false,
-      isLoggedOut:false,
-      userData:null ,
+      isLoggedIn:data.isLoggedIn,
+      userData:data.userData ,
     }
-
  const UsersReducer = createSlice({
   name:"User",
   initialState,
@@ -26,9 +28,13 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
     login :(state,action)=>{
       state.isLoggedIn=true
       state.userData=action.payload
+      localStorage.setItem('loginData', JSON.stringify({
+        isLoggedIn : state.isLoggedIn ,
+        userData:state.userData
+      }))
     },
     logout :(state)=>{
-      state.isLoggedIn=true
+      state.isLoggedIn=false
       state.userData=null
     }
   },

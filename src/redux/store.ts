@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { configureStore } from '@reduxjs/toolkit'
 import productsReducer from './slices/products/productSlice'
 import CategoryReducer from './slices/products/CategorySlice'
@@ -10,6 +11,7 @@ export const store = configureStore({
     usersR: UsersReducer
   }
 })
+
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

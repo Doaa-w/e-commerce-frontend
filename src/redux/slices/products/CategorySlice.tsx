@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit'
 import api from '../../../api'
-import { CategoryState } from '../../../Types'
+import { Category, CategoryState } from '../../../Types'
 
 
 
@@ -19,7 +19,16 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
  const CategoryReducer = createSlice({
   name:"categories",
   initialState,
-  reducers: {},
+  reducers: {
+    deleteCategory:(state , action) =>{
+      const filterCategory =state.categories.filter((Category)=> Category.id !== action.payload)
+      state.categories=filterCategory
+    },
+    addCategory: (state, action :{payload :{category:Category }}) => {
+      // let's append the new product to the beginning of the array
+      state.categories = [action.payload.category, ...state.categories] 
+      }
+  },
   extraReducers:(builder) =>{
     builder
     .addCase(fetchCategories.pending , (state)=>{
@@ -36,5 +45,5 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
     })}
     
 });
-
+export const {deleteCategory ,addCategory} = CategoryReducer.actions
 export default CategoryReducer.reducer;

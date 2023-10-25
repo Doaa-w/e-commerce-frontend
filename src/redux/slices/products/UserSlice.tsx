@@ -40,7 +40,11 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
         isLoggedIn : state.isLoggedIn ,
         userData:state.userData
       }))
-    }
+    },
+    deleteUser:(state , action) =>{
+      const filterUsers =state.users.filter((user)=> user.id !== action.payload)
+      state.users=filterUsers}
+
   },
   extraReducers:(builder) =>{
     builder
@@ -58,5 +62,5 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
     })}
     
 });
-export const {login ,logout}=UsersReducer.actions
+export const {login ,logout ,deleteUser}=UsersReducer.actions
 export default UsersReducer.reducer

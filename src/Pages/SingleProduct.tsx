@@ -1,22 +1,27 @@
 /* eslint-disable prettier/prettier */
 
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { AppDispatch ,RootState } from "../redux/store"
 import { useEffect } from "react"
-import {  findProduct } from "../redux/slices/products/productSlice"
+import {  fetchProducts, findProduct } from "../redux/slices/products/productSlice"
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { IconButton } from "@mui/material";
 
 
 
 
 const SingleProduct =() =>{
+    
     const {id}=useParams()
-    const {SingleProduct,isLoading ,error}=useSelector((state:RootState)=>state.productsR);
+    const navigate =useNavigate()
+    const {SingleProduct, isLoading ,error }=useSelector((state:RootState)=>state.productsR);
     const dispatch =useDispatch<AppDispatch> ();
 
     useEffect(()=>{
-    dispatch(findProduct(Number(id)));
-    },[dispatch , id])
+    dispatch(fetchProducts()).then(()=>
+    dispatch(findProduct(Number(id))))
+    },[])
 
     if(isLoading){
         return <p> loading the Data now ..</p>
@@ -38,6 +43,10 @@ const SingleProduct =() =>{
                         <p>Details : {SingleProduct.description}</p>
                         <p>Size : {SingleProduct.sizes}</p>
                         <p>Product Id : {SingleProduct.id}</p>
+                        <IconButton color="primary" aria-label="add to shopping cart">
+                         <AddShoppingCartIcon />
+                  </IconButton>
+                  <button onClick={()=>{ navigate('/')}}>back</button>
                     )
                 </div>
             )}

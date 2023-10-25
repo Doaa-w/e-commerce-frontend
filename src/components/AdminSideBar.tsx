@@ -17,9 +17,15 @@ const AdminSideBar = () =>{
                 </li>
                 <li>
                 <Link to='/Content'>content</Link>
+               </li>
                 <li>
                 <Link to='/Orders'>Orders</Link>
                 </li>
+                <li>
+                <Link to='/Users'>Users</Link>
+                </li>
+                <li>
+                <Link to='/dashboard/Categories'>Categories</Link>
                 </li>
             </ul>
         </aside>

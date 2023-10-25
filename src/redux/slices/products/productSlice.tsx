@@ -16,22 +16,20 @@ const initialState: ProductState = {
   error: null,
   isLoading: false,
   searchTerm: ' ',
-  SingleProduct :{} as Product
+  SingleProduct: {} as Product
 }
 
 export const productsReducer = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    findProduct: (state,action)=>{
+    findProduct: (state , action)=>{
       const id = action.payload
       const foundProduct = state.products.find((product)=>product.id === id)
       if(foundProduct){
         state.SingleProduct = foundProduct
       }
-
     },
-
     searchProduct:(state , action) =>{
       state.searchTerm = action.payload
     },

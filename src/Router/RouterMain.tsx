@@ -25,9 +25,9 @@ const RouterMain = () => {
             <Route path="/Products" element={< Products />}/>
             <Route path="/Products/:id" element={<SingleProduct/>}/>
             <Route path="/Login" element={<Login pathName={""} />}/>
+            
 
-        <Route path="/" element={<UserRoute/>}>
-            <Route path="/User" element={<Users/>}/>
+             <Route path="/" element={<UserRoute/>}>
             <Route path="/UserProfile" element={<UserProfile/>}/>
             {/* user orders */}
         </Route>
@@ -37,6 +37,7 @@ const RouterMain = () => {
             <Route path="/dashboard/Admin" element={< Admin />} />
             <Route path="/dashboard/AdminProduct" element={<AdminProducts />}/>
             <Route path="/dashboard/Categories" element={<Categories />}/>
+            <Route path="/Users" element={<Users/>}/>
          </Route>
 
             <Route path="*"  element={< Error />} />

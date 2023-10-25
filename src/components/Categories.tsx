@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { useEffect } from "react";
-import { fetchCategories } from "../redux/slices/products/CategorySlice";
+import { deleteCategory, fetchCategories } from "../redux/slices/products/CategorySlice";
 import AdminSideBar from "./AdminSideBar";
 import { Button } from "@mui/material";
 
@@ -23,6 +23,9 @@ const categories = () => {
      }
     if (error){
      return <p>{error}</p>
+
+    } const handelDelete=(id:number)=>{
+        dispatch(deleteCategory(id))
     }
     return (
         <div className="categoriesContainer">
@@ -34,7 +37,7 @@ const categories = () => {
                         <article key={category.id}>
                         <h2>{category.name}</h2>
                         <Button variant="contained" size="small" color="success">Adding</Button> 
-                        <Button variant="contained" size="small" color="error">Remove</Button>
+                        <Button variant="contained" size="small" color="error" onClick={()=> handelDelete(category.id)}>Remove</Button>
                         </article>
                         )})}
             </div>

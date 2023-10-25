@@ -12,7 +12,7 @@
     "firstName": "Jane",
     "lastName": "Smith",
     "email": "jane.smith@example.com",
-    "password": "hashed_password",
+    "password": "5678",
     "role": "visitor"
   },
   {

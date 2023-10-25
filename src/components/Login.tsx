@@ -35,7 +35,7 @@ const handelSubmit= async (event:FormEvent)=>{
         const foundUser= users.find((userData)=> userData.email===user.email)
         if(foundUser &&foundUser.password===user.password){
             dispatch(login(foundUser))
-            navigate(pathName ? pathName : '/${foundUser.role}')
+            navigate(pathName ? pathName : `/dashboard/${foundUser.role}`)
             {<Alert severity="success">you logged in!</Alert>}
         }else {
            {<Alert severity="error">email or password is wrong — try again!</Alert>}
@@ -54,11 +54,10 @@ return(
     <div>
         <h1>login Page</h1>
         <form onSubmit={handelSubmit}> 
-            <label form="email">email    </label>
-            <input type="email"  id="email"  onChange={handelOnChange} /><br/>
-            <label form="password">password</label>
-            <input type="password"  id="password"  onChange={handelOnChange} /><br/>
-            {/* here i faced error and i could not fix it  */}
+            <label htmlFor="email">email    </label>
+            <input type="email"  name="email"  onChange={handelOnChange} /><br/>
+            <label htmlFor="password">password</label>
+            <input type="password"  name="password"  onChange={handelOnChange} /><br/>
             <button>log in</button>
         </form>  
     </div>

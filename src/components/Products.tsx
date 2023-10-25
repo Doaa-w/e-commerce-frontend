@@ -44,7 +44,7 @@ const Products = ()=>{
         const handelSearch = (event :ChangeEvent<HTMLInputElement>)=> {
           const searchKeyword= event.target.value;
           dispatch (searchProduct((searchKeyword)));
-        
+
       }
          const theProducts =searchTerm?products.filter((product)=> 
          product.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())):products;
@@ -81,16 +81,17 @@ const Products = ()=>{
                  <IconButton color="primary" aria-label="add to shopping cart">
                          <AddShoppingCartIcon />
                   </IconButton>
-                  <Link to={'/Products/${product.id}'}>
+                  <Link to={ `/Products/${product.id} `}>
                   <Button variant="contained" size="small">more</Button>
                   </Link>
                     </CardActions>
-                    </div> ))}
+                    </div> 
+                    ))}
                      </Card>
                      
                      </div>
                      </div>
-                     
+                    
     
 )}
 

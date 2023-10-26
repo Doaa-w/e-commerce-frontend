@@ -7,6 +7,7 @@ import Error from "../Pages/Home"
 import Admin from "../Pages/Admin"
 import NavBar from "../components/Navbar"
 import Categories from "../components/Categories"
+import { AddNewCategory } from "../components/AddNewCategory"
 import UserProfile from "../Pages/UserProfile"
 import Users from "../components/Users"
 import Products from "../components/Products"
@@ -15,6 +16,7 @@ import AdminProducts from "../components/AdminProducts"
 import { Login } from "../components/Login"
 import UserRoute from "./UserRoute"
 import AdminRoute from "./AdminRoute"
+import Orders from "../components/Orders"
 
 const RouterMain = () => {
     return(
@@ -37,6 +39,7 @@ const RouterMain = () => {
             <Route path="/dashboard/Admin" element={< Admin />} />
             <Route path="/dashboard/AdminProduct" element={<AdminProducts />}/>
             <Route path="/dashboard/Categories" element={<Categories />}/>
+            <Route path="/dashboard/Orders" element={<Orders />}/>
             <Route path="/Users" element={<Users/>}/>
          </Route>
 

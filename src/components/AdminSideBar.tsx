@@ -27,6 +27,9 @@ const AdminSideBar = () =>{
                 <li>
                 <Link to='/dashboard/Categories'>Categories</Link>
                 </li>
+                <li>
+                <Link to='/dashboard/Orders'>Orders</Link>
+                </li>
             </ul>
         </aside>
     )

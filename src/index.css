@@ -22,9 +22,9 @@ body {
  
 }
 .nav{
-  display:grid;
-  justify-content:space-around;
-  text-align:center;
+  display:flex;
+  justify-content:center;
+  flext-decoration:row;
   background-color:#EAD7BB;
   }
 a {

@@ -4,7 +4,7 @@ import { AppDispatch ,RootState } from "../redux/store"
 import { fetchProducts, searchProduct } from "../redux/slices/products/productSlice";
 import { useEffect } from "react";
 
-import { Button, IconButton } from "@mui/material";
+import { Button, Grid, IconButton } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -54,11 +54,13 @@ const Products = ()=>{
 
          <div> 
             <TextField id="filled-basic" label="searching for .." variant="filled" onChange={handelSearch} value={searchTerm}  />
-            <div className="prdouctsContainer grid grid-cols-3 ">
+            <div className="prdouctsContainer flex space-between ">
               
                <Sort />
                
                <Card sx={{ maxWidth: 400 }}>
+               <Grid  container spacing={4}>
+               <Grid  item  xs={10}  lg={12}>
                {theProducts.length >0 && theProducts.map((product) => (
                 <div key={product.id}>
                   <CardMedia
@@ -66,7 +68,7 @@ const Products = ()=>{
                    image= {product.image}
                    title={product.name}
                     />
-                 <CardContent>
+                 <CardContent >
                    <Typography gutterBottom variant="h5" component="div">
                   {product.name}
                   </Typography>
@@ -87,6 +89,8 @@ const Products = ()=>{
                     </CardActions>
                     </div> 
                     ))}
+                    </Grid>
+                    </Grid>
                      </Card>
                      
                      </div>

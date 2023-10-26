@@ -15,7 +15,7 @@ const NavBar = () => {
         navigate('/Login')
      } 
     return (
-        <div className='nav' >
+        <div className="nav " >
             <ul>
                 { isLoggedIn ? ( 
                     <>

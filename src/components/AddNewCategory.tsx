@@ -2,10 +2,11 @@
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { ProductForm } from './ProductForm'
-import { AppDispatch } from '../redux/store'
-import { Category} from '../Types'
+import { CategoryForm } from './CategortyForm'
 import { addCategory } from '../redux/slices/products/CategorySlice'
+import { AppDispatch } from '../redux/store'
+import { Category } from '../Types'
+
 
 const initialCategoriesState: Category = {
   id: 0,
@@ -37,9 +38,7 @@ export function AddNewCategory() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    // Send the product data to your backend or in this case send it to Redux
     console.log('New category data:', category)
-    // let's add Id property to the object (usually IDs are generated automatically on the backend)
     category.id = +new Date()
     console.log('Category:', category)
 
@@ -51,8 +50,7 @@ export function AddNewCategory() {
   return (
     <div>
       <h3 className="text-2xl font-bold">Add a new Category</h3>
-      {/* makinga categoryform  */}
-      {/* <categoryForm handleSubmit={handleSubmit} handleChange={handleChange} category={category} /> */}
+      <CategoryForm handleSubmit={handleSubmit} handleChange={handleChange} category={category} />
     </div>
   )
 }

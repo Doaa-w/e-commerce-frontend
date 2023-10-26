@@ -30,6 +30,20 @@ export type Category ={
   name:string
 
 }
+export type OrdersState= {
+  orders:Order[]
+  error:null|string
+  isLoading:boolean
+  
+  }
+  
+  export type Order ={
+    id : number
+    productId: number
+    userId: number
+    purchasedAt: number
+  
+  }
 export type User ={
   id:number
   firstName:string

@@ -2,9 +2,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { useEffect } from "react";
-import { deleteCategory, fetchCategories } from "../redux/slices/products/CategorySlice";
+import {  deleteCategory, fetchCategories } from "../redux/slices/products/CategorySlice";
 import AdminSideBar from "./AdminSideBar";
 import { Button } from "@mui/material";
+import { AddNewCategory } from "./AddNewCategory";
 
 
 const categories = () => {
@@ -27,16 +28,18 @@ const categories = () => {
     } const handelDelete=(id:number)=>{
         dispatch(deleteCategory(id))
     }
+
     return (
         <div className="categoriesContainer">
             <AdminSideBar/>
+            <AddNewCategory/>
             <h1>All The Categories</h1>
-            <div>
+            <div >
                 {categories.length >0 && categories.map((category)=>{
                     return(
                         <article key={category.id}>
                         <h2>{category.name}</h2>
-                        <Button variant="contained" size="small" color="success">Adding</Button> 
+                         
                         <Button variant="contained" size="small" color="error" onClick={()=> handelDelete(category.id)}>Remove</Button>
                         </article>
                         )})}

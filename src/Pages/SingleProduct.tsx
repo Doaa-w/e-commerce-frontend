@@ -13,7 +13,7 @@ import { IconButton } from "@mui/material";
 
 const SingleProduct =() =>{
     
-    const {id}=useParams()
+    const { id }= useParams()
     const navigate =useNavigate()
     const {SingleProduct, isLoading ,error }=useSelector((state:RootState)=>state.productsR);
     const dispatch =useDispatch<AppDispatch> ();

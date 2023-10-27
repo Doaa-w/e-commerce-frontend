@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { fetchUsers, login } from "../redux/slices/products/UserSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../redux/store"
-import { Alert } from "@mui/material"
-
+import { Alert, Button } from "@mui/material"
 
 
 export const Login = ({pathName}:{pathName:string;}) =>{
@@ -37,6 +36,7 @@ const handelSubmit= async (event:FormEvent)=>{
             dispatch(login(foundUser))
             navigate(pathName ? pathName : `/dashboard/${foundUser.role}`)
             {<Alert severity="success">you logged in!</Alert>}
+            
         }else {
            {<Alert severity="error">email or password is wrong — try again!</Alert>}
         }
@@ -51,17 +51,17 @@ const handelSubmit= async (event:FormEvent)=>{
 }
 return(
     
-    <div>
-        <h1>login Page</h1>
-        <form onSubmit={handelSubmit}> 
-            <label htmlFor="email">email    </label>
+    
+    <div className="  flex  justify-center m-12 p-20">
+        <h1 className="  mb-16">login Page</h1>
+        <form onSubmit={handelSubmit} className=" flex p-12 items-center"> 
+            <label htmlFor="email">email :</label>
             <input type="email"  name="email"  onChange={handelOnChange} /><br/>
-            <label htmlFor="password">password</label>
+            <label htmlFor="password">password :</label>
             <input type="password"  name="password"  onChange={handelOnChange} /><br/>
-            <button>log in</button>
+            <Button type="submit" variant="contained" size="small">Log In</Button>
         </form>  
     </div>
-
 )
 
 }

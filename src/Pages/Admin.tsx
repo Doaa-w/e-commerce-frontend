@@ -6,8 +6,8 @@ import { Toolbar } from '@mui/material';
 const Admin = () =>{
   
   return (
-  <div>
-    <h3> you are in the admin page</h3>
+  <div >
+    <h1 className='flex items-center' > You are in the Admin page</h1>
   <Toolbar>
   <AdminSideBar/>
   <ProductsManager />

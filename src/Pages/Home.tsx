@@ -10,10 +10,9 @@ const Home = () => {
       
        return (
           <div>
-            <header >
+            {/* <header >
               <h1 className=" w-100">welcome to my store!!</h1>
-              
-              </header>
+              </header> */}
            
                <Products/>
             

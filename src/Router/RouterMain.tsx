@@ -7,7 +7,6 @@ import Error from "../Pages/Home"
 import Admin from "../Pages/Admin"
 import NavBar from "../components/Navbar"
 import Categories from "../components/Categories"
-import { AddNewCategory } from "../components/AddNewCategory"
 import UserProfile from "../Pages/UserProfile"
 import Users from "../components/Users"
 import Products from "../components/Products"
@@ -17,6 +16,7 @@ import { Login } from "../components/Login"
 import UserRoute from "./UserRoute"
 import AdminRoute from "./AdminRoute"
 import Orders from "../components/Orders"
+import Rejister from "../components/Rejister"
 
 const RouterMain = () => {
     return(
@@ -27,12 +27,13 @@ const RouterMain = () => {
             <Route path="/Products" element={< Products />}/>
             <Route path="/Products/:id" element={<SingleProduct/>}/>
             <Route path="/Login" element={<Login pathName={""} />}/>
+            <Route path="/Rejister" element={<Rejister/>} />
             
 
              <Route path="/" element={<UserRoute/>}>
             <Route path="/UserProfile" element={<UserProfile/>}/>
-            {/* user orders */}
-        </Route>
+            
+             </Route>
 
          
         <Route path="/" element={< AdminRoute />}>
@@ -40,7 +41,7 @@ const RouterMain = () => {
             <Route path="/dashboard/AdminProduct" element={<AdminProducts />}/>
             <Route path="/dashboard/Categories" element={<Categories />}/>
             <Route path="/dashboard/Orders" element={<Orders />}/>
-            <Route path="/Users" element={<Users/>}/>
+            <Route path="/dashboard/Users" element={<Users/>}/>
          </Route>
 
             <Route path="*"  element={< Error />} />

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { useEffect } from "react";
 import { fetchOrders } from "../redux/slices/products/OrdersSlice";
+import AdminSideBar from "./AdminSideBar";
 
 
 
@@ -25,12 +26,13 @@ const Orders = () => {
 
 
     return (
-    
-
-        <div className=" flex align-items-center">
-            <h1 > the Orders  :</h1>
+      <div className="flex">
+              <h1 > the Orders  :</h1>
+              
+        <div className=" flex  items-center justify-center">
+            <AdminSideBar/>
             <div> 
-      <table aria-label="orders table" className="mt-5">
+      <table aria-label="orders table" className="mt-5 p4">
         <thead >
             <tr >
             <th>user Id</th>
@@ -51,6 +53,7 @@ const Orders = () => {
                   )} )}
           </tbody>
         </table>
+         </div>
          </div>
          </div>
         

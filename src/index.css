@@ -17,16 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-body {
-  background-color:#FCF5ED;
- 
-}
-.nav{
-  display:flex;
-  justify-content:center;
-  flext-decoration:row;
-  background-color:#EAD7BB;
-  }
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -65,9 +56,6 @@ button:focus-visible {
    
     border: 1px solid transparent;
 
-  }
-  header{
-    background-color:#EAD7BB;
   }
   
 }

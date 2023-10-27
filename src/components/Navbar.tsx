@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Link, useNavigate} from 'react-router-dom';
 import { AppDispatch, RootState } from '../redux/store';
 import {logout } from '../redux/slices/products/UserSlice';
+import { AppBar, Toolbar } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import React from 'react';
+
 
 const NavBar = () => {
 
@@ -15,35 +21,31 @@ const NavBar = () => {
         navigate('/Login')
      } 
     return (
-        <div className="nav " >
-            <ul>
-                { isLoggedIn ? ( 
+        <div className="nav mb-28 mt-18" >
+
+               <React.Fragment>
+                    <AppBar position="fixed" className='flex items-center'>
+                    <header >
+              <h1 className=" w-100 mb-2">welcome to my store!!</h1>
+              </header>
+                        <Toolbar className='flex space-x-8'>
+                        { isLoggedIn ? ( 
                     <>
+                   <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
 
-                    <li>
-                <Link to='/Logout' onClick={handelLogout}>Logout</Link>
-                </li>
-
-                <li>
-                <Link to={'/${userData.role}'}>User Profile</Link>
-                </li>
+                <Link to={`/UserProfile`}>User Profile</Link>
                   </>
                 ):
-                <li>
-                <Link to='/Login'>Login</Link>
-                </li>
+                <>
+                <Link to='/Login'>Login <LoginIcon fontSize="small" /></Link>
+                <Link to='/Rejister'>Rejister</Link>
+                </>
                 }
-
-                <li>
-                    <Link to='/'>Home</Link>
-                </li>
-                <li>
                 <Link to='/Products'>Products</Link>
-                </li>
-                
-                
-                
-            </ul>
+                <Link to='/'> <HomeIcon fontSize="small" /></Link>
+                        </Toolbar>
+                    </AppBar>
+                </React.Fragment> 
         </div>
     )
     

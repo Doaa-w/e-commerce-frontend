@@ -30,11 +30,12 @@ const categories = () => {
     }
 
     return (
-        <div className="categoriesContainer">
+        <div
+        ><h1>All The Categories</h1>
+        <div className="categoriesContainer flex items-center justify-between">
             <AdminSideBar/>
             <AddNewCategory/>
-            <h1>All The Categories</h1>
-            <div >
+            <div className="m-4">
                 {categories.length >0 && categories.map((category)=>{
                     return(
                         <article key={category.id}>
@@ -43,6 +44,7 @@ const categories = () => {
                         <Button variant="contained" size="small" color="error" onClick={()=> handelDelete(category.id)}>Remove</Button>
                         </article>
                         )})}
+            </div>
             </div>
             </div>
     )

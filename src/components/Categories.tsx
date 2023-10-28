@@ -1,12 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../redux/store";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { AppDispatch, RootState } from "../redux/store";
+
 import {  deleteCategory, fetchCategories } from "../redux/slices/products/CategorySlice";
 import AdminSideBar from "./AdminSideBar";
-import { Button } from "@mui/material";
 import { AddNewCategory } from "./AddNewCategory";
 
+import { Button } from "@mui/material";
 
 const categories = () => {
 

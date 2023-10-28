@@ -1,13 +1,16 @@
 /* eslint-disable prettier/prettier */
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link, useNavigate} from 'react-router-dom';
+
 import { AppDispatch, RootState } from '../redux/store';
 import {logout } from '../redux/slices/products/UserSlice';
+
 import { AppBar, Toolbar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
-import React from 'react';
+
 
 
 const NavBar = () => {

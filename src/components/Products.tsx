@@ -1,13 +1,15 @@
 /* eslint-disable prettier/prettier */
+import { useEffect } from "react";
+import React, { ChangeEvent } from 'react'
+
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch ,RootState } from "../redux/store"
 import { fetchProducts, searchProduct } from "../redux/slices/products/productSlice";
-import { useEffect } from "react";
-import React, { ChangeEvent } from 'react'
 import { Link} from "react-router-dom";
+
 import Sort from "./Sort";
 
-import { Button, Grid, IconButton } from "@mui/material";
+import { Button, Divider, Grid, IconButton } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -47,15 +49,16 @@ const Products = ()=>{
  return (
 
          <div > 
-            <TextField label="searching for .." focused  onChange={handelSearch} value={searchTerm}  />
+            <TextField label="searching for .."  onChange={handelSearch} value={searchTerm}  />
             <Sort />
-               <div className="prdouctsContainer ">
+               <div className="prdouctsContainer m-4 p-4">
                
-               <Card sx={{ maxWidth: 400 }}>
-                {/* <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={3}>
-                  <> */}
+             
+                <Stack className="  grid grid-rows-4 grid-cols-4 gap-4" >
+                  {/* <justifyContent="space-between" spacing={9}> direction="row"  divider={<Divider orientation="vertical" flexItem />*/}
                {theProducts.length >0 && theProducts.map((product) => (
-                <div key={product.id}> 
+                // <div>  
+                 <Card sx={{ maxWidth: 400 }} key={product.id}>
                   <CardMedia
                    sx={{ height: 300 }}
                    image= {product.image}
@@ -80,14 +83,15 @@ const Products = ()=>{
                   <Button variant="contained" size="small" href={`/Products/${product.id}`}>more</Button>
                   {/* </Link> */}
                     </CardActions>
-                    </div> 
+                   </Card>
                     ))}
-                    {/* </>
-                     </Stack> */}
-                     </Card>
-                    
+                    {/* {/* </>} */}
+
+                   </Stack>
+                     
+                     </div> 
                      </div>
-                     </div>
+                    //  </div>
                     
     
 )}

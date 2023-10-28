@@ -1,11 +1,13 @@
 /* eslint-disable prettier/prettier */
-
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../redux/store";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { AppDispatch, RootState } from "../redux/store";
 import { deleteUser, fetchUsers } from "../redux/slices/products/UserSlice";
-import UserSideBar from "./UserSideBar";
+import AdminSideBar from "./AdminSideBar";
+
 import { Button } from "@mui/material";
+
 
 const UserOrders = () => {
 
@@ -30,6 +32,7 @@ const UserOrders = () => {
     return (
         <div >
             <h1  className="flex  justify-center">All The users</h1>
+            
             <div className="usersContainer flex justify-center m-12 space-x-3">
                 {users.length >0 && users.map((user)=>{
                     return(
@@ -43,7 +46,8 @@ const UserOrders = () => {
                         </article>
                         )})}
             </div>
-            </div>
+          < AdminSideBar/> 
+           </div>
     )
 }
 

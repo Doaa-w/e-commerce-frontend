@@ -43,7 +43,26 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
     },
     deleteUser:(state , action) =>{
       const filterUsers =state.users.filter((user)=> user.id !== action.payload)
-      state.users=filterUsers}
+      state.users=filterUsers
+    },
+    addUser:(state , action) => {
+      state.users.push(action.payload)
+
+    },
+     updateUser:(state, action) =>{
+      const {id , firstName ,lastName}= action.payload
+      const foundUser =state.users.find((user) =>user.id  ===id)
+      if(foundUser){
+        foundUser.firstName =firstName
+        foundUser.lastName=lastName
+        state.userData=foundUser
+        localStorage.setItem('loginData', JSON.stringify({
+          isLoggedIn : state.isLoggedIn ,
+          userData:state.userData
+        }))
+
+      }
+     },
 
   },
   extraReducers:(builder) =>{
@@ -62,5 +81,5 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
     })}
     
 });
-export const {login ,logout ,deleteUser}=UsersReducer.actions
+export const {login ,logout ,deleteUser ,addUser , updateUser}=UsersReducer.actions
 export default UsersReducer.reducer

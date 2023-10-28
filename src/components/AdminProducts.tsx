@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
+
 import { AppDispatch, RootState } from "../redux/store"
 import { fetchProducts } from "../redux/slices/products/productSlice";
-import { useEffect } from "react";
 import AdminSideBar from "./AdminSideBar";
 
 

@@ -6,7 +6,13 @@ import { AppDispatch, RootState } from "../redux/store";
 
 import { fetchOrders } from "../redux/slices/products/OrdersSlice";
 import AdminSideBar from "./AdminSideBar";
-
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 
 const Orders = () => {
@@ -34,29 +40,33 @@ const Orders = () => {
         <div className=" flex  items-center justify-center">
             <AdminSideBar/>
             <div> 
-      <table aria-label="orders table" className="mt-5 p4">
-        <thead >
-            <tr >
-            <th>user Id</th>
-            <th>product Id </th>
-            <th>purchased Date</th>
-            </tr>
-        </thead>
-        <tbody>
-        {orders.length >0 && orders.map((order) => {
-            return(
-
-             <tr key={order.id}>
-               <td style={{ width: 160 }} >{order.userId}</td>
-               <td style={{ width: 160 }}>{order.productId}</td>
-               <td style={{ width: 160 }} >{order.purchasedAt}</td>
-               </tr>
-
-                  )} )}
-          </tbody>
-        </table>
+     
+        <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell  align="center"> user Id</TableCell>
+            <TableCell align="center" >product Id </TableCell>
+            <TableCell  align="center">purchased Date</TableCell>
+            </TableRow>
+        </TableHead>
+        <TableBody>
+        {orders.length >0 && orders.map((order) =>  (
+            <TableRow
+              key={order.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell align="center"> {order.userId}</TableCell>
+              <TableCell align="center"> {order.productId}</TableCell>
+              <TableCell align="center"> {order.purchasedAt}</TableCell>
+               
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
          </div>
-         </div>
+         </div> 
          </div>
         
     )

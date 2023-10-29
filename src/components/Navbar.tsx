@@ -10,6 +10,7 @@ import { AppBar, Toolbar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
 
@@ -23,15 +24,15 @@ const NavBar = () => {
         dispatch(logout(logout))
         navigate('/Login')
      } 
+
+    
     return (
-        <div className="nav mb-28 mt-18" >
+        <div className="nav mb-20  text-blue-500" >
 
                <React.Fragment>
-                    <AppBar position="fixed" className='flex items-center'>
-                    <header >
-              <h1 className=" w-100 mb-2">welcome to my store!!</h1>
-              </header>
-                        <Toolbar className='flex space-x-8'>
+                    <AppBar position="fixed" className='flex items-center' color='inherit' >
+                        <Toolbar className='flex space-x-8 m-4'> 
+                        
                         { isLoggedIn ? ( 
                     <>
                    <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
@@ -41,10 +42,11 @@ const NavBar = () => {
                 ):
                 <>
                 <Link to='/Login'>Login <LoginIcon fontSize="small" /></Link>
-                <Link to='/Rejister'>Rejister</Link>
+                <Link to='/Rejister'>Register</Link>
                 </>
                 }
                 <Link to='/Products'>Products</Link>
+                <Link to='/'><ShoppingCartIcon fontSize="small" /></Link>
                 <Link to='/'> <HomeIcon fontSize="small" /></Link>
                         </Toolbar>
                     </AppBar>

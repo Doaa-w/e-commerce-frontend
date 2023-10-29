@@ -48,27 +48,27 @@ const Products = ()=>{
 
  return (
 
-         <div > 
+         <div> 
             <TextField label="searching for .."  onChange={handelSearch} value={searchTerm}  />
             <Sort />
-               <div className="prdouctsContainer m-4 p-4">
+               <div className="prdouctsContainer  m-12 p-4 grid grid-cols-4 gap-4">
                
-             
-                <Stack className="  grid grid-rows-4 grid-cols-4 gap-4" >
-                  {/* <justifyContent="space-between" spacing={9}> direction="row"  divider={<Divider orientation="vertical" flexItem />*/}
-               {theProducts.length >0 && theProducts.map((product) => (
-                // <div>  
-                 <Card sx={{ maxWidth: 400 }} key={product.id}>
+                {/* <Stack 
+                 spacing={9} direction="column"  divider={<Divider orientation="vertical" flexItem />} > */}
+                  {/*
+                   <justifyContent="space-between" spacing={9}> direction="row"  divider={<Divider orientation="vertical" flexItem />*/}
+               {theProducts.length >0 && theProducts.map((product) => ( 
+                 <Card sx={{ maxWidth: 300 }} key={product.id} >
                   <CardMedia
-                   sx={{ height: 300 }}
+                   sx={{ height: 200 , width: 200}}
                    image= {product.image}
                    title={product.name}
-                    />
+                   />
                  <CardContent >
                    <Typography gutterBottom variant="h5" component="div">
                   {product.name}
                   </Typography>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h6" component="div">
                   {product.description}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -79,21 +79,17 @@ const Products = ()=>{
                  <IconButton color="primary" aria-label="add to shopping cart">
                          <AddShoppingCartIcon />
                   </IconButton>
-                  {/* <Link to= {`/Products/${product.id}`}>  */}
-                  <Button variant="contained" size="small" href={`/Products/${product.id}`}>more</Button>
-                  {/* </Link> */}
+                  <Link to= {`/Products/${product.id}`} > 
+                  <Button variant="contained" size="small"  >more</Button>
+                  </Link>
                     </CardActions>
                    </Card>
                     ))}
-                    {/* {/* </>} */}
 
-                   </Stack>
-                     
+                   {/* </Stack>
+                      */}
                      </div> 
-                     </div>
-                    //  </div>
-                    
-    
+                     </div>   
 )}
 
 export default Products

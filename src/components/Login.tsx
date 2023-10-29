@@ -37,7 +37,7 @@ const handelSubmit= async (event:FormEvent)=>{
         if(foundUser &&foundUser.password===user.password){
             dispatch(login(foundUser))
             navigate(pathName ? pathName : `/dashboard/${foundUser.role}`)
-            {<Alert severity="success">you logged in!</Alert>}
+           
             
         }else {
            {<Alert severity="error">email or password is wrong — try again!</Alert>}
@@ -61,7 +61,9 @@ return(
             <input type="email"  name="email"  onChange={handelOnChange} /><br/>
             <label htmlFor="password">password :</label>
             <input type="password"  name="password"  onChange={handelOnChange} /><br/>
-            <Button type="submit" variant="contained" size="small">Log In</Button>
+            <Button type="submit" variant="contained" size="small"  onClick={() => {
+               <Alert severity="success">you logged in!</Alert>;
+  }}>Log In</Button>
         </form>  
     </div>
 )

@@ -37,15 +37,15 @@ const Rejister = () =>{
       component="form"
       sx={{
         '& > :not(style)': { m: 1 },
-      }} className='p-28'>
-    <h1 className='mb-20'>Rejister</h1>
+      }} className='p-28 m-7'>
+    <h1 className='mb-20'>Register</h1>
     <form onSubmit={handelForm}>
     <Input placeholder="first Name"  type='text' value={user.firstName} onChange={handelChange}/>
     <Input placeholder="last Name" type='text' value={user.lastName} onChange={handelChange}/>
     <Input placeholder="email"  type='email' value={user.email} onChange={handelChange} />
     <Input type='password' placeholder="password" value={user.password} onChange={handelChange} />
     <Input type='password' placeholder="confirm the password"  value={user.password} onChange={handelChange} />
-    <Button type='submit' variant="contained" size="small" href='/login' >Rejister</Button>
+    <Button type='submit' variant="contained" size="small" href='/login' >Register</Button>
     </form>
     </Box>
 

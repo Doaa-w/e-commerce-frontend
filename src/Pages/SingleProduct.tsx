@@ -9,7 +9,7 @@ import {  fetchProducts, findProduct } from "../redux/slices/products/productSli
 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { IconButton } from "@mui/material";
-
+import Button from '@mui/material/Button';
 
 
 
@@ -34,22 +34,20 @@ const SingleProduct =() =>{
 
     
     return (
-        <div>
+        <div className="flex justify-center m-10 mt-4 text-white">
             { SingleProduct && (
-                <div key={id}>
-                    return (
-                        <h2>Name : {SingleProduct.name}</h2>
-                        <h3>Price : {SingleProduct.price} $</h3>
-                         <h3>Category : {SingleProduct.categories}</h3>
-                        <img src={SingleProduct.image} alt={SingleProduct.name} className="w-20"/>
-                        <p>Details : {SingleProduct.description}</p>
-                        <p>Size : {SingleProduct.sizes}</p>
-                        <p>Product Id : {SingleProduct.id}</p>
+                <div key={id} >
+                     <img src={SingleProduct.image} alt={SingleProduct.name} className="w-72"/>
+                        <h1>{SingleProduct.name}</h1><br/>
+                        <h3>Price : {SingleProduct.price} $</h3> <br/>
+                        <p>Details : {SingleProduct.description}</p><br/>
+                        <p>Size : {SingleProduct.sizes}</p><br/>
                         <IconButton color="primary" aria-label="add to shopping cart">
                          <AddShoppingCartIcon />
                   </IconButton>
-                  <button onClick={()=>{ navigate('/')}}>back</button>
-                    )
+                  <Button variant="contained" size="small"onClick={()=>{ navigate('/')}}>back</Button>
+                  {/* <button >back</button> */}
+                    
                 </div>
             )}
         </div>

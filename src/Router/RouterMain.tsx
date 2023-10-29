@@ -2,7 +2,7 @@
 
 import { BrowserRouter ,Routes ,Route } from "react-router-dom"
 
-import SingleProduct  from "../Pages/Home"
+import SingleProduct  from "../Pages/SingleProduct"
 import Error from "../Pages/Home"
 import Admin from "../Pages/Admin"
 import NavBar from "../components/Navbar"

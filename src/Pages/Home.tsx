@@ -9,7 +9,6 @@ const Home = () => {
        return (
           <div>
                <Products/>
-               <Footer/>
                </div>
        )}
            

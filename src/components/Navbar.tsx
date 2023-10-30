@@ -42,7 +42,7 @@ const NavBar = () => {
                 ):
                 <>
                 <Link to='/Login'>Login <LoginIcon fontSize="small" /></Link>
-                <Link to='/Rejister'>Register</Link>
+                <Link to='/Register'>Register</Link>
                 </>
                 }
                 <Link to='/Products'>Products</Link>

@@ -10,9 +10,9 @@ const AdminSideBar = () =>{
 
     return (
         
-            <div className="AdminSideBar">
+            <div className="AdminSideBar h-80">
                 <React.Fragment>
-                    <AppBar position='sticky' className='mt-2'>
+                    <AppBar position='sticky' color='inherit' >
                         <Toolbar>
                             <ul>
                             <li> <Link to='/dashboard/Orders'>Orders</Link></li>  

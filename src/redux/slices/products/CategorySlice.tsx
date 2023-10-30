@@ -27,7 +27,14 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
     addCategory: (state, action :{payload :{category:Category }}) => {
       // let's append the new product to the beginning of the array
       state.categories = [action.payload.category, ...state.categories] 
-      }
+      },
+   updateCategory:(state, action) =>{
+    const {id , name }= action.payload
+    const foundCategory =state.categories.find((Category) =>Category.id  ===id)
+    if(foundCategory){
+      foundCategory.name=name
+    }
+    }
   },
   extraReducers:(builder) =>{
     builder
@@ -45,5 +52,5 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
     })}
     
 });
-export const {deleteCategory ,addCategory} = CategoryReducer.actions
+export const {deleteCategory ,addCategory ,updateCategory} = CategoryReducer.actions
 export default CategoryReducer.reducer;

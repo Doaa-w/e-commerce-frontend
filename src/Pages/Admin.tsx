@@ -10,9 +10,9 @@ const Admin = () =>{
   <div >
     <h1 className='flex items-center' > You are in the Admin page</h1>
   <Toolbar>
-  <AdminSideBar/>
   <ProductsManager />
   </Toolbar>
+  <AdminSideBar/>
   </div>
 )}
 export default Admin

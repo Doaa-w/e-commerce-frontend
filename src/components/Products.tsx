@@ -18,6 +18,7 @@ import CardMedia from '@mui/material/CardMedia';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
+import Footer from "./Footer";
 
 const Products = ()=>{
     const {products, isLoading ,error , searchTerm}= useSelector((state:RootState) =>
@@ -51,14 +52,10 @@ const Products = ()=>{
          <div> 
             <TextField label="searching for .."  onChange={handelSearch} value={searchTerm}  />
             <Sort />
-               <div className="prdouctsContainer  m-12 p-4 grid grid-cols-4 gap-4">
+               <div className="prdouctsContainer grid grid-cols-4 gap-6 p-4 ">
                
-                {/* <Stack 
-                 spacing={9} direction="column"  divider={<Divider orientation="vertical" flexItem />} > */}
-                  {/*
-                   <justifyContent="space-between" spacing={9}> direction="row"  divider={<Divider orientation="vertical" flexItem />*/}
                {theProducts.length >0 && theProducts.map((product) => ( 
-                 <Card sx={{ maxWidth: 300 }} key={product.id} >
+                 <Card sx={{ maxWidth: 300 }} key={product.id} className="shadow-xl grid justify-items-center ">
                   <CardMedia
                    sx={{ height: 200 , width: 200}}
                    image= {product.image}
@@ -85,11 +82,9 @@ const Products = ()=>{
                     </CardActions>
                    </Card>
                     ))}
-
-                   {/* </Stack>
-                      */}
                      </div> 
-                     </div>   
+                     </div> 
+                    
 )}
 
 export default Products

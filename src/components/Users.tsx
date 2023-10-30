@@ -7,6 +7,13 @@ import { deleteUser, fetchUsers } from "../redux/slices/products/UserSlice";
 import AdminSideBar from "./AdminSideBar";
 
 import { Button } from "@mui/material";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 
 const UserOrders = () => {
@@ -30,25 +37,44 @@ const UserOrders = () => {
      return <p>{error}</p>
     }
     return (
-        <div >
+
+         <div >
             <h1  className="flex  justify-center">All The users</h1>
             
-            <div className="usersContainer flex justify-center m-12 space-x-3">
-                
-                {users.length >0 && users.map((user)=>{
-                    return(
-                        <article key={user.id}>
-                        <h2>{user.firstName}</h2>
-                        <h2>{user.lastName}</h2>
-                        <p>{user.email}</p>
-                        <p>{user.role}</p>
-                        <Button variant="contained" size="small" color="error" 
-                        onClick={()=> handelDelete(user.id)} >Remove User</Button>
-                        </article>
-                        )})}
-            </div>
-          < AdminSideBar/> 
-           </div>
+            <div className="usersContainer mb-4 ">
+
+            <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="orders table">
+        <TableHead>
+          <TableRow>
+            <TableCell  align="center"> user name </TableCell>
+            <TableCell align="center" > user email </TableCell>
+            <TableCell align="center" > user role </TableCell>
+            <TableCell align="center" >  </TableCell>
+            </TableRow>
+        </TableHead>
+        <TableBody>
+
+                {users.length >0 && users.map((user)=>(
+                     <TableRow
+                     key={user.id}
+                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                   >       
+              <TableCell align="center">{user.firstName} {user.lastName}</TableCell>
+              <TableCell align="center"> {user.email}</TableCell>
+                 <TableCell align="center"> {user.role}</TableCell>
+                 <TableCell>  <Button variant="contained" size="small" color="error" 
+                        onClick={()=> handelDelete(user.id)} >Remove User</Button></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+       </TableContainer>
+       </div>
+         <AdminSideBar/> 
+         </div>
+  
+          
     )
 }
 

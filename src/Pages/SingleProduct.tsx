@@ -8,7 +8,7 @@ import { AppDispatch ,RootState } from "../redux/store"
 import {  fetchProducts, findProduct } from "../redux/slices/products/productSlice"
 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { IconButton } from "@mui/material";
+import { Container, IconButton } from "@mui/material";
 import Button from '@mui/material/Button';
 
 
@@ -34,20 +34,21 @@ const SingleProduct =() =>{
 
     
     return (
-        <div className="flex justify-center m-10 mt-4 text-white">
+        <div className="flex justify-center m-10 mt-10 p-16">
             { SingleProduct && (
-                <div key={id} >
+                <div key={id} className="flex" >
                      <img src={SingleProduct.image} alt={SingleProduct.name} className="w-72"/>
+                     <Container maxWidth="sm">
                         <h1>{SingleProduct.name}</h1><br/>
-                        <h3>Price : {SingleProduct.price} $</h3> <br/>
-                        <p>Details : {SingleProduct.description}</p><br/>
+                        <p>Description : {SingleProduct.description}</p><br/>
                         <p>Size : {SingleProduct.sizes}</p><br/>
+                        <p>variants :{SingleProduct.variants}</p><br/>
+                        <h3>Price : {SingleProduct.price} $</h3> <br/>
                         <IconButton color="primary" aria-label="add to shopping cart">
                          <AddShoppingCartIcon />
                   </IconButton>
-                  <Button variant="contained" size="small"onClick={()=>{ navigate('/')}}>back</Button>
-                  {/* <button >back</button> */}
-                    
+                  <Button variant="contained" size="small" onClick={()=>{ navigate('/')}}>back</Button> 
+                   </Container>
                 </div>
             )}
         </div>

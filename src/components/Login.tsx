@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../redux/store"
 import { fetchUsers, login } from "../redux/slices/products/UserSlice"
 
-import { Alert, Button } from "@mui/material"
+import { Alert, Button, Container } from "@mui/material"
 
 
 export const Login = ({pathName}:{pathName:string;}) =>{
@@ -54,16 +54,19 @@ const handelSubmit= async (event:FormEvent)=>{
 return(
     
     
-    <div className="  flex  justify-center m-12 p-20">
+    <div className="   p-10">
         <h1 className="  mb-16">login Page</h1>
-        <form onSubmit={handelSubmit} className=" flex p-12 items-center"> 
-            <label htmlFor="email">email :</label>
+
+        <form onSubmit={handelSubmit} className="flex p-4 items-center">
+        <Container maxWidth="sm" className="mb-10 bg-blue-500"> 
+            <label htmlFor="email">Email :</label><br/>
             <input type="email"  name="email"  onChange={handelOnChange} /><br/>
-            <label htmlFor="password">password :</label>
-            <input type="password"  name="password"  onChange={handelOnChange} /><br/>
+            <label htmlFor="password">Password :</label><br/>
+            <input type="password"  name="password"  onChange={handelOnChange} /><br/><br/>
             <Button type="submit" variant="contained" size="small"  onClick={() => {
-               <Alert severity="success">you logged in!</Alert>;
-  }}>Log In</Button>
+              <Alert severity="success">you logged in!</Alert>;
+                 }}>Log In</Button>
+                 </Container>
         </form>  
     </div>
 )

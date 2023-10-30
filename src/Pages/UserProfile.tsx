@@ -6,7 +6,8 @@ import { fetchUsers, updateUser } from '../redux/slices/products/UserSlice';
 
 import UserSideBar from '../components/UserSideBar';
 
-import { Button, Toolbar } from '@mui/material';
+import { Button, Container, Toolbar } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 const UserProfile = ()=>{
  const {userData}= useSelector((state:RootState) =>
@@ -21,7 +22,6 @@ const UserProfile = ()=>{
     const [user ,setUser] = useState ({
         firstName: userData?.firstName,
         lastName: userData?.lastName,
-        //  onChange={handelChange} 
         })
 
 
@@ -43,24 +43,27 @@ const UserProfile = ()=>{
 
     return(
         <div>
-            <h1  className= "flex justify-center"> this is {`${userData?.firstName}`} page </h1>
-        <div className= "  m-12">
-        <p> name : {`${userData?.firstName} ${userData?.lastName} `}</p><br/>
-        <p> email: {`${userData?.email}`}</p><br/>
-        <Button onClick={handelFormOpen}>Edit</Button>
+            <h1  className= "flex justify-center"> This Is {`${userData?.firstName}`} page </h1>
+            <Container maxWidth="sm">
+        <div className= " p-4 m-12 bg-white shadow-lg">
+        <Typography gutterBottom variant="h6" component="div">
+                  Name : {`${userData?.firstName} ${userData?.lastName} `}
+                  </Typography>
+                  <Typography gutterBottom variant="h6" component="div">
+                  Email:  {`${userData?.email}` }
+                  </Typography>
+         <Button variant="contained" onClick={handelFormOpen}>Edit</Button>
          </div>
+         <div className='pb-4'>
         {isFormOpen && (
-          <form onSubmit={handelSubmit} className= " flex m-12" >
-        <input type='text' name='firstName' onChange={handelChange} value={user.firstName}/>
-        <input type='text' name='lasttName' onChange={handelChange} value={user.lastName} />
-        <Button type='submit'>update the name</Button>
-        </form>  
-        )}
-        
-
-        <Toolbar>
-        <UserSideBar />
-        </Toolbar>
+          <form onSubmit={handelSubmit} className= " m-12" >
+        <input type='text' name='firstName' onChange={handelChange} value={user.firstName} className='mb-4'/><br/>
+        <input type='text' name='lasttName' onChange={handelChange} value={user.lastName} className='mb-4'/><br/>
+        <Button variant="contained" type='submit'>update the name</Button>
+        </form> 
+         )}
+        </div > 
+       </Container>
         
         </div>
     )

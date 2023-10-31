@@ -10,37 +10,21 @@ const AdminSideBar = () =>{
 
     return (
         
-            <div className="AdminSideBar h-80">
-                <React.Fragment>
-                    <AppBar position='sticky' color='inherit' >
-                        <Toolbar>
-                            <ul>
-                            <li> <Link to='/dashboard/Orders'>Orders</Link></li>  
-                        <li><Link to='/dashboard/Users'>Users</Link></li>    
-                <li><Link to='/dashboard/Categories'>Categories</Link></li> 
-                            </ul>
+            <div className="AdminSideBar ">
+                <React.Fragment >
+                     <AppBar position='sticky' color='inherit'>
+                        <Toolbar> 
+                            <h4>Admin pages :</h4>
+                            <ul  className='flex justify-around space-x-4 m-4 '>
+                       <li> <Link to='/dashboard/Orders'>Orders</Link>   </li>
+                       <li> <Link to='/dashboard/Users'>Users</Link>    </li>
+                       <li> <Link to='/dashboard/Categories'>Categories</Link> </li>
+                       <li> <Link to='/dashboard/Admin'>Product</Link> </li>
+                           </ul>
                             <NavBar/>
                         </Toolbar>
                     </AppBar>
                 </React.Fragment>
-                {/* <div className="AdminInfo flex space-x-8 flex items-center">
-                <h2>Admin name</h2>
-                <p>Admin E-mail</p>
-                 </div>
-                 <ul>
-                <li>
-                <Link to='/Orders'>Orders</Link>
-                </li>
-                <li>
-                <Link to='/Users'>Users</Link>
-                </li>
-                <li>
-                <Link to='/dashboard/Categories'>Categories</Link>
-                </li>
-                <li>
-                <Link to='/dashboard/Orders'>Orders</Link>
-                </li>
-            </ul> */}
         </div> 
     )
 }

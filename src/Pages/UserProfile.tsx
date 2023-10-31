@@ -4,9 +4,8 @@ import { AppDispatch, RootState } from '../redux/store';
 import {  useDispatch, useSelector } from 'react-redux';
 import { fetchUsers, updateUser } from '../redux/slices/products/UserSlice';
 
-import UserSideBar from '../components/UserSideBar';
 
-import { Button, Container, Toolbar } from '@mui/material';
+import { Button, Container} from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 const UserProfile = ()=>{

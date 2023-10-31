@@ -39,12 +39,13 @@ const UserOrders = () => {
     return (
 
          <div >
-            <h1  className="flex  justify-center">All The users</h1>
+              <AdminSideBar/>
+            <h1  className="flex  justify-center mt-4 mb-4">All The users</h1>
             
             <div className="usersContainer mb-4 ">
 
             <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="orders table">
+      <Table sx={{minWidth: 200 }} aria-label="orders table">
         <TableHead>
           <TableRow>
             <TableCell  align="center"> user name </TableCell>
@@ -71,7 +72,6 @@ const UserOrders = () => {
       </Table>
        </TableContainer>
        </div>
-         <AdminSideBar/> 
          </div>
   
           

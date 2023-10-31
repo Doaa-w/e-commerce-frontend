@@ -7,12 +7,12 @@ import { Toolbar } from '@mui/material';
 const Admin = () =>{
   
   return (
-  <div >
-    <h1 className='flex items-center' > You are in the Admin page</h1>
-  <Toolbar>
+  <div > 
+    <AdminSideBar/>
+    <h1  className="flex  justify-center mt-4 mb-4">All The Products</h1>  <Toolbar>
   <ProductsManager />
   </Toolbar>
-  <AdminSideBar/>
+ 
   </div>
 )}
 export default Admin

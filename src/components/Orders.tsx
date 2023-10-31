@@ -35,13 +35,15 @@ const Orders = () => {
 
     return (
       <div >
-              <h1 > the Orders:</h1>
-              <div className=" mb-4"> 
+            
+              <AdminSideBar/>  
+              <h1  className="flex  justify-center mt-4 mb-4">All The Orders</h1>
+              <div className=" mt-4 mb-4"> 
               
               
      
         <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="orders table">
+      <Table sx={{ minWidth: 200 }} aria-label="orders table">
         <TableHead>
           <TableRow>
             <TableCell  align="center"> user Id</TableCell>
@@ -65,7 +67,6 @@ const Orders = () => {
       </Table>
     </TableContainer>
          </div>
-         <AdminSideBar/>
          </div> 
       
         

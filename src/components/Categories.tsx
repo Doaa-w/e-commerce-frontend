@@ -56,8 +56,9 @@ const categories = () => {
     }
 
     return (
-        <div
-        ><h1>All The Categories</h1>
+        <div>
+          <AdminSideBar/>
+          <h1  className="flex  justify-center mt-4 mb-4">All The Categories</h1>
         <div className="categoriesContainer flex items-center mt-6 mb-7">
             <AddNewCategory/>
             {/* {isFormOpen && (
@@ -68,7 +69,7 @@ const categories = () => {
         )} */}
             {/* <div className="m-8 p-6 grid grid-cols-6"> */}
             <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="category table">
+      <Table sx={{ minWidth: 200 }} aria-label="category table">
         <TableHead>
           <TableRow>
             <TableCell  align="center"> category name</TableCell>
@@ -91,7 +92,6 @@ const categories = () => {
                         </Table>
                       </TableContainer>
                            </div>
-                           <AdminSideBar/>
                            </div> 
     )
 

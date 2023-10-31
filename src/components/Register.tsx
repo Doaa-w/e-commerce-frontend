@@ -44,11 +44,11 @@ const Register = () =>{
     
     <form onSubmit={handelSubmit} >
     <Typography gutterBottom variant="h6" component="div">Please Provid :</Typography>
-    <Input placeholder="first Name"  type='text' id="firstName" value={user.firstName} onChange={handelChange} /><br/>
-    <Input placeholder="last Name" type='text' id="lastName" value={user.lastName} onChange={handelChange}  /><br/>
-    <Input placeholder="email"  type='email' id="email" value={user.email} onChange={handelChange}   /><br/>
-    <Input type='password' placeholder="password" id="password" value={user.password} onChange={handelChange} /><br/>
-    <Input type='password' placeholder="confirm the password" id="password" value={user.password} onChange={handelChange}/><br/>
+    <Input placeholder="first Name"  type='text' id="firstName" value={user.firstName} onChange={handelChange} required /><br/>
+    <Input placeholder="last Name" type='text' id="lastName" value={user.lastName} onChange={handelChange} required /><br/>
+    <Input placeholder="email"  type='email' id="email" value={user.email} onChange={handelChange} required /><br/>
+    <Input type='password' placeholder="password" id="password" value={user.password} onChange={handelChange}  required /><br/>
+    <Input type='password' placeholder="confirm the password" id="password" value={user.password} onChange={handelChange} required /><br/>
     <Button type='submit' variant="contained" size="small" href='/login' >Register</Button>
     </form>
     </Box>

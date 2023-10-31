@@ -1,24 +1,29 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link, useNavigate} from 'react-router-dom';
 
 import { AppDispatch, RootState } from '../redux/store';
-import {logout } from '../redux/slices/products/UserSlice';
+import {fetchUsers, logout } from '../redux/slices/products/UserSlice';
 
 import { AppBar, Toolbar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AdminSideBar from './AdminSideBar';
 
 
 
 const NavBar = () => {
 
-    const {isLoggedIn }= useSelector((state:RootState) => state.usersR)
+    const {isLoggedIn ,userData }= useSelector((state:RootState) => state.usersR)
     const dispatch =useDispatch<AppDispatch> ();
     const navigate= useNavigate()
+
+    // useEffect(() => {
+    //     dispatch(fetchUsers())
+    //    },[dispatch]); 
 
     const handelLogout= () =>{
         dispatch(logout(logout))
@@ -48,6 +53,14 @@ const NavBar = () => {
                 <Link to='/Products'>Products</Link>
                 <Link to='/'><ShoppingCartIcon fontSize="small" /></Link>
                 <Link to='/'> <HomeIcon fontSize="small" /></Link>
+
+               {/* {isLoggedIn && userData?.role === 'admin'? (
+                    <>
+                           <AdminSideBar/>
+                           </>
+                ): 
+                <Link to='/'> <HomeIcon fontSize="small" /></Link>
+                }  */}
                         </Toolbar>
                     </AppBar>
                 </React.Fragment> 

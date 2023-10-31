@@ -31,7 +31,7 @@ const AdminProducts = ()=>{
                     {products.length >0 && products.map((product)=>{
                         return(
                             <article key={product.id}>
-                            <img src={product.image}/>
+                            <img src={product.image} width={80}/>
                             <h2>{product.name}</h2>
                             <p>{product.description}</p>
                             </article>

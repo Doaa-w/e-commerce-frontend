@@ -11,6 +11,8 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {IconButton } from "@mui/material";
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { Product } from "../Types"
+import { addToCart } from "../redux/slices/products/cartSlice"
 
 
 
@@ -31,6 +33,10 @@ const SingleProduct =() =>{
        if (error){
         return <p>{error}</p>
        }
+       const handelAddCart=(product: Product)=>{
+        console.log(product)
+        dispatch(addToCart(product))
+      }
 
     
     return (
@@ -44,7 +50,7 @@ const SingleProduct =() =>{
                         <p>Size : {SingleProduct.sizes}</p><br/>
                         <p>variants :{SingleProduct.variants}</p><br/>
                         <h3>Price : {SingleProduct.price} $</h3> <br/>
-                        <IconButton color="primary" aria-label="add to shopping cart">
+                        <IconButton  color="primary" aria-label="add to shopping cart" onClick={()=>{handelAddCart(SingleProduct)}}>
                          <AddShoppingCartIcon />
                   </IconButton>
                   <Button variant="contained" size="small" href="/">back</Button> 

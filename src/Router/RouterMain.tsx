@@ -17,6 +17,7 @@ import UserRoute from "./UserRoute"
 import AdminRoute from "./AdminRoute"
 import Orders from "../components/Orders"
 import Register from "../components/Register"
+import Cart from "../components/Cart"
 
 const RouterMain = () => {
     return(
@@ -25,6 +26,7 @@ const RouterMain = () => {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/Products" element={< Products />}/>
+            <Route path="/Cart" element={<Cart/>}/>
             <Route path="/Products/:id" element={<SingleProduct/>}/>
             <Route path="/Login" element={<Login pathName={""} />}/>
             <Route path="/Register" element={<Register/>} />

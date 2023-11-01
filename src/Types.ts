@@ -10,6 +10,10 @@ export type Product = {
      price:number
   }
   
+  export type cartState={
+    cartItems:Product[]
+}
+  
   export type ProductState = {
     products: Product[]
     Product:[]

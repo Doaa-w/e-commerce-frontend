@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { useEffect } from "react";
+import { useEffect ,useState } from "react";
 import React, { ChangeEvent } from 'react'
 
 import { useDispatch, useSelector } from "react-redux"
@@ -9,7 +9,7 @@ import { Link} from "react-router-dom";
 
 import Sort from "./Sort";
 
-import { Button, Divider, Grid, IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -17,7 +17,8 @@ import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
+import { Product } from "../Types";
+import { addToCart } from "../redux/slices/products/cartSlice";
 
 
 const Products = ()=>{
@@ -31,7 +32,7 @@ const Products = ()=>{
        
        
         if(isLoading){
-         return <p> loading the Data now ..</p>
+         return <p> loading the Products now ..</p>
          }
         if (error){
          return <p>{error}</p>
@@ -43,17 +44,36 @@ const Products = ()=>{
           dispatch (searchProduct((searchKeyword)));
 
       }
+      const handelAddCart=(product: Product)=>{
+        console.log(product)
+        dispatch(addToCart(product))
+      }
          const theProducts =searchTerm?products.filter((product)=> 
          product.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())):products;
 
+         
+        //  const [currentPage ,setCurrentPage] = useState(1)
+        //  const [itemsPerPage ]= useState(6)
 
+        //  const indexOfLastPage = currentPage * itemsPerPage 
+        //  const indexOfFirstPage = indexOfLastPage - itemsPerPage
+        //  const currentItems = theProducts.slice(indexOfFirstPage , indexOfLastPage)
+        //  const totalPages = Math.ceil(theProducts.length / itemsPerPage)
+         
+        //  const handelNext=()=>{
+        //   setCurrentPage(currentPage +1 )
+        //  }
+        //  const handelPrev=()=>{
+        //   setCurrentPage(currentPage - 1 )
+        //  }
+        
  return (
 
          <div > 
             <TextField label="searching for .."  onChange={handelSearch} value={searchTerm}  />
             <Sort />
-               <div className="prdouctsContainer flex flex-row flex-wrap justify-around items-center gap-4 " > 
-               {theProducts.length >0 && theProducts.map((product) => ( 
+               <div className="prdouctsContainer flex flex-row flex-wrap justify-around items-center gap-8 " > 
+               {theProducts.length >0 && theProducts.map((product:Product) => ( 
                  <Card sx={{maxWidth: 300}} key={product.id} className="shadow-xl  grid justify-items-center" >
                   <CardMedia
                    sx={{ height: 200 , width: 150}}
@@ -72,8 +92,8 @@ const Products = ()=>{
                  </Typography>
                  </CardContent>
                  <CardActions>
-                 <IconButton color="primary" aria-label="add to shopping cart">
-                         <AddShoppingCartIcon />
+                 <IconButton color="primary" aria-label="add to shopping cart" onClick={()=>{handelAddCart(product)}}>
+                         <AddShoppingCartIcon  />
                   </IconButton>
                   <Link to= {`/Products/${product.id}`} > 
                   <Button variant="contained" size="small"  >more</Button>
@@ -86,7 +106,8 @@ const Products = ()=>{
                  ))}
                   
                      </div> 
-                    
+                    {/* <button onClick={handelPrev} disabled ={currentPage == totalPages }> previous </button> 
+                    <button onClick={handelNext} disabled ={currentPage ==1 }> netx </button> */}
                      </div> 
                     
 )}

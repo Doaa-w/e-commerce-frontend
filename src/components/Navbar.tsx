@@ -14,16 +14,11 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AdminSideBar from './AdminSideBar';
 
 
-
 const NavBar = () => {
 
     const {isLoggedIn ,userData }= useSelector((state:RootState) => state.usersR)
     const dispatch =useDispatch<AppDispatch> ();
     const navigate= useNavigate()
-
-    // useEffect(() => {
-    //     dispatch(fetchUsers())
-    //    },[dispatch]); 
 
     const handelLogout= () =>{
         dispatch(logout(logout))
@@ -38,7 +33,7 @@ const NavBar = () => {
                     <AppBar position="fixed" className='flex items-center' color='inherit' >
                         <Toolbar className='flex space-x-8 m-4'> 
                         
-                        { isLoggedIn ? ( 
+                        {/* { isLoggedIn ? ( 
                     <>
                    <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
 
@@ -51,16 +46,24 @@ const NavBar = () => {
                 </>
                 }
                 <Link to='/Products'>Products</Link>
-                <Link to='/'><ShoppingCartIcon fontSize="small" /></Link>
-                <Link to='/'> <HomeIcon fontSize="small" /></Link>
+                <Link to='/Cart'> <ShoppingCartIcon fontSize="small"/></Link>
+                <Link to='/'> <HomeIcon fontSize="small" /></Link> */}
 
-               {/* {isLoggedIn && userData?.role === 'admin'? (
+               {isLoggedIn && userData?.role === 'admin'? (
                     <>
                            <AdminSideBar/>
+                           <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
+
+                            <Link to={`/UserProfile`}>User Profile</Link>
                            </>
+
                 ): 
-                <Link to='/'> <HomeIcon fontSize="small" /></Link>
-                }  */}
+                <>
+                <Link to='/Login'>Login <LoginIcon fontSize="small" /></Link>
+                <Link to='/Register'>Register</Link>
+                </>
+                } 
+                 {/* Typography variant="h3" gutterBottom  */}
                         </Toolbar>
                     </AppBar>
                 </React.Fragment> 

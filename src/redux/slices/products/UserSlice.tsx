@@ -46,7 +46,9 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
       state.users=filterUsers
     },
     addUser:(state , action) => {
+      console.log(action.payload)
       state.users.push(action.payload)
+      console.log(state.users)
 
     },
      updateUser:(state, action) =>{

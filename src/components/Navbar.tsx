@@ -53,7 +53,6 @@ const NavBar = () => {
                     <>
                            <AdminSideBar/>
                            <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
-
                             <Link to={`/UserProfile`}>User Profile</Link>
                            </>
 
@@ -63,6 +62,23 @@ const NavBar = () => {
                 <Link to='/Register'>Register</Link>
                 </>
                 } 
+                {isLoggedIn  ? (
+                    <>
+                    <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
+ 
+                 <Link to={`/UserProfile`}>User Profile</Link>
+                   </>
+
+                ):
+                <>
+                <Link to='/Login'>Login <LoginIcon fontSize="small" /></Link>
+                <Link to='/Register'>Register</Link>
+                </>
+
+                }
+                <Link to='/Products'>Products</Link>
+                <Link to='/Cart'> <ShoppingCartIcon fontSize="small"/></Link>
+                <Link to='/'> <HomeIcon fontSize="small" /></Link>
                  {/* Typography variant="h3" gutterBottom  */}
                         </Toolbar>
                     </AppBar>

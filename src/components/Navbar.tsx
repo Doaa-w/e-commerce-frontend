@@ -31,8 +31,9 @@ const NavBar = () => {
 
                <React.Fragment>
                     <AppBar position="fixed" className='flex items-center' color='inherit' >
-                        <Toolbar className='flex space-x-8 m-4'> 
                         
+                        <Toolbar className='flex flex-wrap justify-statr space-x-12 m-4'> 
+                        <h1 className='flex items-start'>ELECO</h1>
                         { isLoggedIn ? ( 
                     <>
                    <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
@@ -44,19 +45,21 @@ const NavBar = () => {
                 <Link to='/Login'>Login <LoginIcon fontSize="small" /></Link>
                 <Link to='/Register'>Register</Link>
                 </>
-                }
+                } 
                 <Link to='/Products'>Products</Link>
                 <Link to='/Cart'> <ShoppingCartIcon fontSize="small"/></Link>
                 <Link to='/'> <HomeIcon fontSize="small" /></Link>
 
-               {/* {isLoggedIn && userData?.role === 'admin'? (
+                {/* {isLoggedIn && userData?.role === 'admin'?( 
                     <>
                            <AdminSideBar/>
                            <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
                             <Link to={`/UserProfile`}>User Profile</Link>
                            </>
+                          
+                        */}
 
-                ): 
+               {/* ): 
                 <>
                 <Link to='/Login'>Login <LoginIcon fontSize="small" /></Link>
                 <Link to='/Register'>Register</Link>

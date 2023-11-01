@@ -33,7 +33,7 @@ const NavBar = () => {
                     <AppBar position="fixed" className='flex items-center' color='inherit' >
                         <Toolbar className='flex space-x-8 m-4'> 
                         
-                        {/* { isLoggedIn ? ( 
+                        { isLoggedIn ? ( 
                     <>
                    <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
 
@@ -47,9 +47,9 @@ const NavBar = () => {
                 }
                 <Link to='/Products'>Products</Link>
                 <Link to='/Cart'> <ShoppingCartIcon fontSize="small"/></Link>
-                <Link to='/'> <HomeIcon fontSize="small" /></Link> */}
+                <Link to='/'> <HomeIcon fontSize="small" /></Link>
 
-               {isLoggedIn && userData?.role === 'admin'? (
+               {/* {isLoggedIn && userData?.role === 'admin'? (
                     <>
                            <AdminSideBar/>
                            <Link to='/' onClick={handelLogout}>Logout <LogoutIcon fontSize="small" /></Link>
@@ -78,8 +78,8 @@ const NavBar = () => {
                 }
                 <Link to='/Products'>Products</Link>
                 <Link to='/Cart'> <ShoppingCartIcon fontSize="small"/></Link>
-                <Link to='/'> <HomeIcon fontSize="small" /></Link>
-                 {/* Typography variant="h3" gutterBottom  */}
+                <Link to='/'> <HomeIcon fontSize="small" /></Link> */}
+               
                         </Toolbar>
                     </AppBar>
                 </React.Fragment> 

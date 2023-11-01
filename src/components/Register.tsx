@@ -44,12 +44,13 @@ const Register = () =>{
     
     <form onSubmit={handelSubmit} >
     <Typography gutterBottom variant="h6" component="div">Please Provid :</Typography>
-    <Input placeholder="first Name"  type='text' id="firstName" value={user.firstName} onChange={handelChange} required /><br/>
-    <Input placeholder="last Name" type='text' id="lastName" value={user.lastName} onChange={handelChange} required /><br/>
-    <Input placeholder="email"  type='email' id="email" value={user.email} onChange={handelChange} required /><br/>
-    <Input type='password' placeholder="password" id="password" value={user.password} onChange={handelChange}  required /><br/>
-    <Input type='password' placeholder="confirm the password" id="password" value={user.password} onChange={handelChange} required /><br/>
-    <Button type='submit' variant="contained" size="small" href='/login' >Register</Button>
+    <Input placeholder="first Name" type='text' name="firstName" value={user.firstName} onChange={handelChange} required={true} /><br/>
+    {/* {error} */}
+    <Input placeholder="last Name" type='text' name="lastName" value={user.lastName} onChange={handelChange} required /><br/>
+    <Input placeholder="email"  type='email' name="email" value={user.email} onChange={handelChange} required /><br/>
+    <Input type='password' placeholder="password" name="password" value={user.password} onChange={handelChange}  required /><br/>
+    <Input type='password' placeholder="confirm the password" name="password" value={user.password} onChange={handelChange} required /><br/>
+    <Button type='submit' variant="contained" size="small" >Register</Button>
     </form>
     </Box>
     </div>

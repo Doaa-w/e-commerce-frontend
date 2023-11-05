@@ -50,7 +50,7 @@ const SingleProduct =() =>{
                         <p>Size : {SingleProduct.sizes}</p><br/>
                         <p>variants :{SingleProduct.variants}</p><br/>
                         <h3>Price : {SingleProduct.price} $</h3> <br/>
-                        <IconButton  color="primary" aria-label="add to shopping cart" onClick={()=>{handelAddCart(SingleProduct)}}>
+                        <IconButton  color="primary" aria-label="add to  cart" onClick={()=>{handelAddCart(SingleProduct)}}>
                          <AddShoppingCartIcon />
                   </IconButton>
                   <Button variant="contained" size="small" href="/">back</Button> 

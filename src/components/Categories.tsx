@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
-import { ChangeEvent, FormEvent, useEffect , useState} from "react";
+import {useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../redux/store";
 
-import {  deleteCategory, fetchCategories, updateCategory } from "../redux/slices/products/CategorySlice";
+import {  deleteCategory, fetchCategories } from "../redux/slices/products/CategorySlice";
 import AdminSideBar from "./AdminSideBar";
 import { AddNewCategory } from "./AddNewCategory";
 
@@ -27,24 +27,6 @@ const categories = () => {
      dispatch(fetchCategories())
     },[dispatch]); 
 
-    // const [isFormOpen,setIsFormOpen]=useState(false) 
-    // const [category ,setCategory] =useState(' ')
-
-
-    // const handelFormOpen=()=>{
-    //     setIsFormOpen(!isFormOpen)
-    // }
-
-    // // const handelChange =(event:ChangeEvent<HTMLInputElement>) => {
-    // //      setCategory([event.target.value])
-    // //     },
-    //     const handelSubmit= async (event:FormEvent)=>{
-    //         event.preventDefault() 
-    //         const updateCategoryDate ={id:category.id, name:category.name}
-    //         dispatch(updateCategory(updateCategoryDate))
-
-    //     }
-   
     if(isLoading){
      return <p> loading the Data now ..</p>
      }
@@ -61,13 +43,6 @@ const categories = () => {
           <h1  className="flex  justify-center mt-4 mb-4">All The Categories</h1>
         <div className="categoriesContainer flex items-center mt-6 mb-7">
             <AddNewCategory/>
-            {/* {isFormOpen && (
-          <form onSubmit={handelSubmit} className= " flex m-12" > 
-        <input type='text' name='name' onChange={handelChange} value={category.name}/>
-        <Button type='submit'>update the category</Button>
-        </form>  
-        )} */}
-            {/* <div className="m-8 p-6 grid grid-cols-6"> */}
             <TableContainer component={Paper}>
       <Table sx={{ minWidth: 200 }} aria-label="category table">
         <TableHead>
@@ -88,8 +63,9 @@ const categories = () => {
 
                   </TableRow>
                             ))}
+                            
                           </TableBody>
-                        </Table>
+                       </Table>
                       </TableContainer>
                            </div>
                            </div> 

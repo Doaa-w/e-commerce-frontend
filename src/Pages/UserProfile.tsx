@@ -51,15 +51,15 @@ const UserProfile = ()=>{
                   <Typography gutterBottom variant="h6" component="div">
                   Email:  {`${userData?.email}` }
                   </Typography>
-         <Button variant="contained" onClick={handelFormOpen}>Edit</Button>
+                   <Button variant="contained" onClick={handelFormOpen}>Edit</Button>
          </div>
-         <div className='pb-4'>
-        {isFormOpen && (
-          <form onSubmit={handelSubmit} className= " m-12" >
-        <input type='text' name='firstName' onChange={handelChange} value={user.firstName} className='mb-4'/><br/>
-        <input type='text' name='lasttName' onChange={handelChange} value={user.lastName} className='mb-4'/><br/>
-        <Button variant="contained" type='submit'>update the name</Button>
-        </form> 
+          <div className='pb-4'>
+             {isFormOpen && (
+             <form onSubmit={handelSubmit} className= " m-12" >
+              <input type='text' name='firstName' onChange={handelChange} value={user.firstName} className='mb-4'/><br/>
+              <input type='text' name='lasttName' onChange={handelChange} value={user.lastName} className='mb-4'/><br/>
+              <Button variant="contained" type='submit'>update the name</Button>
+             </form> 
          )}
         </div > 
        </Container>

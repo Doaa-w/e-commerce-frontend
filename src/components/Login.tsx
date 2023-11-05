@@ -44,13 +44,12 @@ const handelSubmit= async (event:FormEvent)=>{
       }
 
     try{
-        console.log(user)
+     
         const foundUser= users.find((userData)=> userData.email===user.email)
         if(foundUser &&foundUser.password===user.password){
             dispatch(login(foundUser))
             navigate(pathName ? pathName : `/dashboard/${foundUser.role}`)
-            console.log(foundUser)
-            
+             
         }else {
            {<Alert severity="error">email or password is wrong — try again!</Alert>}
         }

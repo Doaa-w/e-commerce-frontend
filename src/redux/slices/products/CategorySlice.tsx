@@ -24,8 +24,7 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
       const filterCategory =state.categories.filter((Category)=> Category.id !== action.payload)
       state.categories=filterCategory
     },
-    addCategory: (state, action :{payload :{category:Category }}) => {
-      // let's append the new product to the beginning of the array
+    addCategory: (state, action ) => {
       state.categories = [action.payload.category, ...state.categories] 
       },
    updateCategory:(state, action) =>{

@@ -29,7 +29,6 @@ const Register = () =>{
        setUser((prevUser)=> {
         return { ...prevUser, [event.target.name]: event.target.value}
       }) 
-      console.log(user)
     }
     const [firstNamError ,setFirstNamError]=useState('')
     const [lastNamError ,setLastNamError]=useState('')
@@ -47,8 +46,8 @@ const Register = () =>{
          setLastNamError('Last Name must be more that 5 characyers')
         return
       }
-      if(user.email.length <9){
-        setEmailNamError('Email must be more that 9 characyers')
+      if(user.email.length <7){
+        setEmailNamError('Email must be more that 7 characyers')
         return
       }
       if(user.password.length <4){
@@ -57,8 +56,7 @@ const Register = () =>{
       }
 
        dispatch(fetchUsers()).then(()=> dispatch(addUser(newUser))) 
-       console.log(newUser)
-       console.log('new user' , user)
+       
        navigate('/login')
     }
   

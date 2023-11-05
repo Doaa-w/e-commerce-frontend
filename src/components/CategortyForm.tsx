@@ -24,7 +24,7 @@ export function CategoryForm({ category, handleSubmit, handleChange }: categoryF
         <input type="text" name="name" id="name"
           value={category.name}
           onChange={handleChange}
-          className={inputStyle}  />
+          className={inputStyle} required />
       </div>
       <div className="mb-4">
         <label htmlFor="id" className={labelStyle}>  id: </label>
@@ -32,6 +32,7 @@ export function CategoryForm({ category, handleSubmit, handleChange }: categoryF
           value={category.id}
           onChange={handleChange}
           className={inputStyle}
+          required
         />
       </div>
         <Button variant="contained" size="small" color="success" type="submit"> Add Category</Button> 

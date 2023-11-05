@@ -51,21 +51,6 @@ const Products = ()=>{
          const theProducts =searchTerm?products.filter((product)=> 
          product.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())):products;
 
-         
-        //  const [currentPage ,setCurrentPage] = useState(1)
-        //  const [itemsPerPage ]= useState(6)
-
-        //  const indexOfLastPage = currentPage * itemsPerPage 
-        //  const indexOfFirstPage = indexOfLastPage - itemsPerPage
-        //  const currentItems = theProducts.slice(indexOfFirstPage , indexOfLastPage)
-        //  const totalPages = Math.ceil(theProducts.length / itemsPerPage)
-         
-        //  const handelNext=()=>{
-        //   setCurrentPage(currentPage +1 )
-        //  }
-        //  const handelPrev=()=>{
-        //   setCurrentPage(currentPage - 1 )
-        //  }
         
  return (
 
@@ -106,8 +91,6 @@ const Products = ()=>{
                  ))}
                   
                      </div> 
-                    {/* <button onClick={handelPrev} disabled ={currentPage == totalPages }> previous </button> 
-                    <button onClick={handelNext} disabled ={currentPage ==1 }> netx </button> */}
                      </div> 
                     
 )}

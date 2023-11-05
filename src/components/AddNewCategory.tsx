@@ -43,7 +43,7 @@ export function AddNewCategory() {
     console.log('Category:', category)
 
     dispatch(addCategory({ category}))
-    // Reset the form
+
     setCategory(initialCategoriesState)
   }
 

@@ -1,15 +1,20 @@
 /* eslint-disable prettier/prettier */
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit'
-import api from '../../../api'
+import axios from 'axios'
 import {  UsersState } from '../../../Types'
 
 
-
-
-export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () => {
-    const response = await api.get('npm audit fix')
-    return response.data
+export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
+    const response = await axios.get('http://localhost:5050/api/Users')
+    // console.log(response.data.payload.users)
+    return response.data.payload
     })
+
+    export const deleteUsers =  async (id:string) => {
+      const response = await axios.delete(`http://localhost:5050/api/Users/${id}`)
+      // console.log(response.data.payload.users)
+      return response.data.payload
+      }
 
     const data = localStorage.getItem('loginData') !== null ? 
     JSON.parse(String(localStorage.getItem('loginData'))) :[]
@@ -41,10 +46,10 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
         userData:state.userData
       }))
     },
-    deleteUser:(state , action) =>{
-      const filterUsers =state.users.filter((user)=> user.id !== action.payload)
-      state.users=filterUsers
-    },
+    // deleteUser:(state , action) =>{
+    //   const filterUsers =state.users.filter((user)=> user._id !== action.payload)
+    //   state.users=filterUsers
+    // },
     addUser:(state , action) => {
       console.log(action.payload)
       state.users.push(action.payload)
@@ -53,10 +58,10 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
     },
      updateUser:(state, action) =>{
       const {id , firstName ,lastName}= action.payload
-      const foundUser =state.users.find((user) =>user.id  ===id)
+      const foundUser =state.users.find((user) =>user._id  ===id)
       if(foundUser){
-        foundUser.firstName =firstName
-        foundUser.lastName=lastName
+        foundUser.first_name =firstName
+        foundUser.last_name=lastName
         state.userData=foundUser
         localStorage.setItem('loginData', JSON.stringify({
           isLoggedIn : state.isLoggedIn ,
@@ -83,5 +88,5 @@ export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () =>
     })}
     
 });
-export const {login ,logout ,deleteUser ,addUser , updateUser}=UsersReducer.actions
+export const {login ,logout  ,addUser , updateUser}=UsersReducer.actions
 export default UsersReducer.reducer

@@ -30,7 +30,7 @@ isLoading:boolean
 }
 
 export type Category ={
-  id : number
+  _id : number
   name:string
 
 }
@@ -49,12 +49,13 @@ export type OrdersState= {
   
   }
 export type User ={
-  id:number
-  firstName:string
-  lastName:string
+  _id:string
+  first_name:string
+  last_name:string
   email:string
   password:string
-  role:string
+  phone:string
+  isAdmin:boolean;
 }
 export type UsersState ={
   users:User[]

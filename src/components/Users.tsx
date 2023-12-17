@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../redux/store";
-import { deleteUser, fetchUsers } from "../redux/slices/products/UserSlice";
+import {  deleteUsers, fetchUsers } from "../redux/slices/products/UserSlice";
 import AdminSideBar from "./AdminSideBar";
 
 import { Button } from "@mui/material";
@@ -26,8 +26,13 @@ const UserOrders = () => {
      dispatch(fetchUsers())
     },[dispatch]); 
    
-    const handelDelete=(id:number)=>{
-        dispatch(deleteUser(id))
+    const handelDelete= async (id:string)=>{
+        try {
+          const respones = await deleteUsers(id)
+          dispatch(fetchUsers())
+        } catch (error) {
+          console.log(error)
+        }
     }
    
     if(isLoading){
@@ -58,14 +63,14 @@ const UserOrders = () => {
 
                 {users.length >0 && users.map((user)=>(
                      <TableRow
-                     key={user.id}
+                     key={user._id}
                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                    >       
-              <TableCell align="center">{user.firstName} {user.lastName}</TableCell>
+              <TableCell align="center">{user.first_name} </TableCell>
               <TableCell align="center"> {user.email}</TableCell>
-                 <TableCell align="center"> {user.role}</TableCell>
+                 <TableCell align="center"> {user.isAdmin}</TableCell>
                  <TableCell>  <Button variant="contained" size="small" color="error" 
-                        onClick={()=> handelDelete(user.id)} >Remove User</Button></TableCell>
+                        onClick={()=> handelDelete(user._id)} >Remove User</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

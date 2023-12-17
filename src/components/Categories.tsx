@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../redux/store";
 
-import {  deleteCategory, fetchCategories } from "../redux/slices/products/CategorySlice";
+import {  deletecategory, fetchCategories } from "../redux/slices/products/CategorySlice";
 import AdminSideBar from "./AdminSideBar";
 import { AddNewCategory } from "./AddNewCategory";
 
@@ -32,11 +32,16 @@ const categories = () => {
      }
     if (error){
      return <p>{error}</p>
-
-    } const handelDelete=(id:number)=>{
-        dispatch(deleteCategory(id))
     }
-
+     const handelDelete= async (slug:string)=>{
+      try {
+        const respones = await deletecategory(slug)
+        dispatch(fetchCategories())
+      } catch (error) {
+        console.log(error)
+      }
+  
+}
     return (
         <div>
           <AdminSideBar/>
@@ -55,11 +60,11 @@ const categories = () => {
 
                 {categories.length >0 && categories.map((category)=>(
                      <TableRow
-                     key={category.id}
+                     key={category._id}
                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                    >
                      <TableCell align="center"> {category.name}</TableCell>
-                     <TableCell align="center"> <Button variant="contained" size="small" color="error" onClick={()=> handelDelete(category.id)}>Remove</Button></TableCell>
+                     <TableCell align="center"> <Button variant="contained" size="small" color="error" onClick={()=> handelDelete(category.name)}>Remove</Button></TableCell>
 
                   </TableRow>
                             ))}

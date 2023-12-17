@@ -1,14 +1,19 @@
 /* eslint-disable prettier/prettier */
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit'
-import api from '../../../api'
+import axios from 'axios'
 import { Category, CategoryState } from '../../../Types'
 
 
 
 export const fetchCategories = createAsyncThunk('categories/fetchCategories' , async () => {
-    const response = await api.get('/mock/e-commerce/categories.json')
-    return response.data
+    const response = await axios.get('http://localhost:5050/api/categories')
+    return response.data.payload
     })
+
+    export const deletecategory =  async (slug:string) => {
+      const response = await axios.delete(`http://localhost:5050/api/categories/${slug}`)
+      return response.data.payload
+      }
     
     const initialState :CategoryState = {
       categories: [],
@@ -20,16 +25,16 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
   name:"categories",
   initialState,
   reducers: {
-    deleteCategory:(state , action) =>{
-      const filterCategory =state.categories.filter((Category)=> Category.id !== action.payload)
-      state.categories=filterCategory
-    },
+    // deleteCategory:(state , action) =>{
+    //   const filterCategory =state.categories.filter((Category)=> Category._id !== action.payload)
+    //   state.categories=filterCategory
+    // },
     addCategory: (state, action ) => {
       state.categories = [action.payload.category, ...state.categories] 
       },
    updateCategory:(state, action) =>{
     const {id , name }= action.payload
-    const foundCategory =state.categories.find((Category) =>Category.id  ===id)
+    const foundCategory =state.categories.find((Category) =>Category._id  ===id)
     if(foundCategory){
       foundCategory.name=name
     }
@@ -51,5 +56,5 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
     })}
     
 });
-export const {deleteCategory ,addCategory ,updateCategory} = CategoryReducer.actions
+export const { addCategory ,updateCategory} = CategoryReducer.actions
 export default CategoryReducer.reducer;

@@ -38,13 +38,13 @@ const RouterMain = () => {
              </Route>
 
          
-        <Route path="/" element={< AdminRoute />}>
+        {/* <Route path="/" element={< AdminRoute />}> */}
             <Route path="/dashboard/Admin" element={< Admin />} />
             <Route path="/dashboard/AdminProduct" element={<AdminProducts />}/>
             <Route path="/dashboard/Categories" element={<Categories />}/>
             <Route path="/dashboard/Orders" element={<Orders />}/>
             <Route path="/dashboard/Users" element={<Users/>}/>
-         </Route>
+         {/* </Route> */}
 
             <Route path="*"  element={< Error />} />
         </Routes>

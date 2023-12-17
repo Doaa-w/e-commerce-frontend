@@ -5,7 +5,7 @@ import {useParams } from "react-router-dom"
 
 import { AppDispatch ,RootState } from "../redux/store"
 
-import {  fetchProducts, findProduct } from "../redux/slices/products/productSlice"
+import {  fetchProducts, findProduct } from "../redux/slices/products/ProductSlice"
 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {IconButton } from "@mui/material";

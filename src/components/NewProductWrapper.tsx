@@ -2,7 +2,7 @@ import { useState, ChangeEvent, FormEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { ProductForm } from './ProductForm'
-import { addProduct } from '../redux/slices/products/productSlice'
+import { addProduct } from '../redux/slices/products/ProductSlice'
 import { AppDispatch } from '../redux/store'
 import { Product } from '../Types'
 

@@ -7,7 +7,7 @@ import {  UsersState } from '../../../Types'
 
 
 export const fetchUsers = createAsyncThunk('users/fetchCategories' , async () => {
-    const response = await api.get('/mock/e-commerce/users.json')
+    const response = await api.get('npm audit fix')
     return response.data
     })
 

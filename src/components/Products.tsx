@@ -4,7 +4,7 @@ import React, { ChangeEvent } from 'react'
 
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch ,RootState } from "../redux/store"
-import { fetchProducts, searchProduct } from "../redux/slices/products/productSlice";
+import { fetchProducts, searchProduct } from "../redux/slices/products/ProductSlice";
 import { Link} from "react-router-dom";
 
 import Sort from "./Sort";

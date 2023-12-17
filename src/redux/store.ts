@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { configureStore } from '@reduxjs/toolkit'
-import productsReducer from './slices/products/productSlice'
+import productsReducer from './slices/products/ProductSlice'
 import CategoryReducer from './slices/products/CategorySlice'
 import UsersReducer from './slices/products/UserSlice'
 import OrdersReducer from './slices/products/OrdersSlice'

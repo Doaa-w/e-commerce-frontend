@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import  { ChangeEvent } from 'react'
 
 import { AppDispatch } from "../redux/store";
-import { sortProducts } from "../redux/slices/products/productSlice";
+import { sortProducts } from "../redux/slices/products/ProductSlice";
 
 import SortIcon from '@mui/icons-material/Sort';
 

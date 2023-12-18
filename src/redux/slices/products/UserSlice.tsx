@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import {  UsersState } from '../../../Types'
+import {  User, UsersState } from '../../../Types'
 
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
@@ -12,8 +12,14 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
 
     export const deleteUsers =  async (id:string) => {
       const response = await axios.delete(`http://localhost:5050/api/Users/${id}`)
-      // console.log(response.data.payload.users)
       return response.data.payload
+      }
+      export const registeredUser= async (user:object)=>{
+        const response = await axios.post('http://localhost:5050/api/users/register',user)
+        console.log('reducer', registeredUser)
+        console.log(response.data.message)
+        console.log(Error)
+        return response.data.payload
       }
 
     const data = localStorage.getItem('loginData') !== null ? 

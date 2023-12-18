@@ -1,13 +1,12 @@
 /* eslint-disable prettier/prettier */
 export type Product = {
-    id: number
-    name: string
+    _id: string
+    title: string
     image: string
     description: string
-    categories: number[]
-    variants: string[]
-     sizes: string[]
-     price:number
+    category: string
+    quantity: string
+    price:number
   }
   
   export type cartState={
@@ -55,6 +54,7 @@ export type User ={
   email:string
   password:string
   phone:string
+  address: string
   isAdmin:boolean;
 }
 export type UsersState ={

@@ -34,21 +34,21 @@ const handelOnChange =(event:ChangeEvent<HTMLInputElement>) => {
 
 const handelSubmit= async (event:FormEvent)=>{
     event.preventDefault()
-    if(user.email.length <10){
-        setEmailNamError('E-mail must be more that 7 characyers')
-        return
-      }
-      if(user.password.length <4){
-        setPasswordNamError('Password must be more that 4 characyers')
-        return
-      }
+    // if(user.email.length<2){
+    //     setEmailNamError('E-mail must be more that 6 characTers')
+    //     return
+    //   }
+    //   if(user.password.length <4){
+    //     setPasswordNamError('Password must be more that 4 characTers')
+    //     return
+    //   }
 
     try{
      
         const foundUser= users.find((userData)=> userData.email===user.email)
         if(foundUser &&foundUser.password===user.password){
             dispatch(login(foundUser))
-            navigate(pathName ? pathName : `/dashboard/${foundUser.role}`)
+            navigate(pathName ? pathName : `/dashboard/${foundUser.isAdmin}`)
              
         }else {
            {<Alert severity="error">email or password is wrong — try again!</Alert>}

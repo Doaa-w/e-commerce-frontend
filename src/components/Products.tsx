@@ -49,7 +49,7 @@ const Products = ()=>{
         dispatch(addToCart(product))
       }
          const theProducts =searchTerm?products.filter((product)=> 
-         product.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())):products;
+         product.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())):products;
 
         
  return (
@@ -59,15 +59,15 @@ const Products = ()=>{
             <Sort />
                <div className="prdouctsContainer flex flex-row flex-wrap justify-around items-center gap-8 " > 
                {theProducts.length >0 && theProducts.map((product:Product) => ( 
-                 <Card sx={{maxWidth: 300}} key={product.id} className="shadow-xl  grid justify-items-center" >
+                 <Card sx={{maxWidth: 300}} key={product._id} className="shadow-xl  grid justify-items-center" >
                   <CardMedia
                    sx={{ height: 200 , width: 150}}
                    image= {product.image}
-                   title={product.name}
+                   title={product.title}
                    />
                  <CardContent >
                    <Typography gutterBottom variant="h5" component="div">
-                  {product.name}
+                  {product.title}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
                   {product.description}
@@ -80,7 +80,7 @@ const Products = ()=>{
                  <IconButton color="primary" aria-label="add to shopping cart" onClick={()=>{handelAddCart(product)}}>
                          <AddShoppingCartIcon  />
                   </IconButton>
-                  <Link to= {`/Products/${product.id}`} > 
+                  <Link to= {`/Products/${product._id}`} > 
                   <Button variant="contained" size="small"  >more</Button>
                   </Link>
                     </CardActions>

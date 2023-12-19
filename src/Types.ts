@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 export type Product = {
     _id: string
+    slug:string
     title: string
     image: string
     description: string

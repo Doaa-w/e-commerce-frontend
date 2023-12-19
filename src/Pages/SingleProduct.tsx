@@ -23,8 +23,8 @@ const SingleProduct =() =>{
     const dispatch =useDispatch<AppDispatch> ();
 ///
     useEffect(()=>{
-    fetchSingleProducts(_id)
-    fetchProducts()
+    dispatch(fetchSingleProducts(_id))
+   
     },[])
 
     if(isLoading){
@@ -43,7 +43,7 @@ const SingleProduct =() =>{
         <div className="flex justify-center m-10 mt-10 p-16 ">
             { SingleProduct && (
                 <div key={_id} className="flex flex-wrap ">
-                     <img src={SingleProduct.image} alt={SingleProduct.title} className="w-72 p-8 flex"/>
+                     <img src={`http://localhost:5050/${SingleProduct.image}`} alt={SingleProduct.title} className="w-72 p-8 flex"/>
                      <Box >
                         <h1>{SingleProduct.title}</h1><br/>
                         <p>Description : {SingleProduct.description}</p><br/>

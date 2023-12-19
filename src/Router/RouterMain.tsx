@@ -27,7 +27,7 @@ const RouterMain = () => {
             <Route path="/" element={<Home/>}/>
             <Route path="/Products" element={< Products />}/>
             <Route path="/Cart" element={<Cart/>}/>
-            <Route path="/Products/:id" element={<SingleProduct/>}/>
+            <Route path="/Products/:_id" element={<SingleProduct/>}/>
             <Route path="/Login" element={<Login pathName={""} />}/>
             <Route path="/Register" element={<Register/>} />
             

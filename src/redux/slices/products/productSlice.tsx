@@ -8,14 +8,18 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts' , async (
 const response = await axios.get('http://localhost:5050/api/products')
 return response.data.payload
 })
-//
-export const fetchSingleProducts =  async (_id:string | undefined ) => {
-  const response = await axios.get(`http://localhost:5050/api/products/:${_id}`)
-  console.log(Error)
-  return response.data
-  
-  //[0]
-  }
+
+export const fetchSingleProducts =  createAsyncThunk ('products/fetchSingleProducts' ,
+ async (_id:string | undefined ) => {
+  const response = await axios.get(`http://localhost:5050/api/products/${_id}`)
+  console.log(response)
+  return response.data.payload
+  })
+  export const deleteProduct = createAsyncThunk('products/deleteProduct' , async (slug:string) => {
+    const response = await axios.delete(`http://localhost:5050/api/products/${slug}`)
+    return response.data.payload
+    console.log(response.data.message)
+    })
 
 const initialState: ProductState = {
   products: [],
@@ -63,16 +67,20 @@ export const productsReducer = createSlice({
       // let's append the new product to the beginning of the array
       state.products = [action.payload.product, ...state.products]
     },
-    removeProduct: (state, action:{payload :{productId:number}}) => {
-      const filteredItems = state.products.filter((product) => Number(product._id) !== action.payload.productId)
-      state.products = filteredItems
-    }
-    },
+    // removeProduct: (state, action:{payload :{productId:number}}) => {
+    //   const filteredItems = state.products.filter((product) => Number(product._id) !== action.payload.productId)
+    //   state.products = filteredItems
+    // }
+     },
 
   extraReducers:(builder) => {
     builder
     .addCase(fetchProducts.pending,(state)=>{
       state.isLoading=true;
+    })
+     .addCase(deleteProduct.fulfilled,(state , action)=>{
+      state.isLoading=true;
+      state.products=state.products.filter((product)=>product.slug !==action.payload)
     })
     .addCase(fetchProducts.fulfilled,(state,action)=>{
       state.products = action.payload
@@ -83,10 +91,27 @@ export const productsReducer = createSlice({
       state.isLoading=false;
       state.error= "error we can not fech Data";
     }) 
+    .addCase(fetchSingleProducts.fulfilled,(state,action)=>{
+      state.SingleProduct = action.payload
+      
+    })
+    .addMatcher(
+      (action)=>action.type.endsWith('/pending') ,
+      (state)=> {
+        state.isLoading = true
+        state.error=null
+      })
+      .addMatcher(
+        (action)=>action.type.endsWith('/rejected') ,
+        (state , action)=> {
+          state.isLoading = false,
+          state.error=action.error.message || "some error accurd"
+        }
+    )
   }
   }
 
 )
   
-export const {productsRequest,productsSuccess,addProduct,removeProduct, searchProduct ,sortProducts } = productsReducer.actions
+export const {productsRequest,productsSuccess,addProduct, searchProduct ,sortProducts } = productsReducer.actions
 export default productsReducer.reducer

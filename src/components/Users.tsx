@@ -68,7 +68,6 @@ const UserOrders = () => {
                    >       
               <TableCell align="center">{user.first_name} </TableCell>
               <TableCell align="center"> {user.email}</TableCell>
-                 <TableCell align="center"> {user.isAdmin}</TableCell>
                  <TableCell>  <Button variant="contained" size="small" color="error" 
                         onClick={()=> handelDelete(user._id)} >Remove User</Button></TableCell>
             </TableRow>

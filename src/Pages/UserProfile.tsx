@@ -19,8 +19,8 @@ const UserProfile = ()=>{
 
     const [isFormOpen,setIsFormOpen]=useState(false)
     const [user ,setUser] = useState ({
-        firstName: userData?.firstName,
-        lastName: userData?.lastName,
+        firstName: userData?.first_name,
+        lastName: userData?.last_name,
         })
 
 
@@ -35,18 +35,18 @@ const UserProfile = ()=>{
         }
         const handelSubmit= async (event:FormEvent)=>{
             event.preventDefault() 
-            const undateUserDate ={id: userData?.id, ...user}
+            const undateUserDate ={id: userData?._id, ...user}
             dispatch(updateUser(undateUserDate))
 
         }
 
     return(
         <div>
-            <h1  className= "flex justify-center"> This Is {`${userData?.firstName}`} page </h1>
+            <h1  className= "flex justify-center"> This Is {`${userData?.first_name}`} page </h1>
             <Container maxWidth="sm">
         <div className= " p-4 m-12 bg-white shadow-lg">
         <Typography gutterBottom variant="h6" component="div">
-                  Name : {`${userData?.firstName} ${userData?.lastName} `}
+                  Name : {`${userData?.first_name} ${userData?.last_name} `}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
                   Email:  {`${userData?.email}` }

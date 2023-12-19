@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Link, useNavigate} from 'react-router-dom';
 
 import { AppDispatch, RootState } from '../redux/store';
-import { logout } from '../redux/slices/products/UserSlice';
+import { userLogOut } from '../redux/slices/products/UserSlice';
 
 import { AppBar, Toolbar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
@@ -22,7 +22,7 @@ const NavBar = () => {
     const navigate= useNavigate()
 
     const handelLogout= () =>{
-        dispatch(logout(logout))
+        dispatch(userLogOut())
         navigate('/Login')
      } 
 

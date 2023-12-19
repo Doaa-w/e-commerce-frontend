@@ -14,19 +14,14 @@ import { Product } from '../Types'
 import { TextField } from '@mui/material'
 
 export function ProductsManager() {
-    const {products, isLoading ,error , searchTerm}= useSelector((state:RootState) =>
+    const {products,  searchTerm}= useSelector((state:RootState) =>
         state.productsR );
         const dispatch =useDispatch<AppDispatch> ();
 
         useEffect(() => {
          dispatch(fetchProducts())
         },[dispatch]); 
-        if(isLoading){
-          return <p> loading the Products now ..</p>
-          }
-         if (error){
-          return <p>{error}</p>
-         }
+  
         const handelDelet=(slug :string)=>{
           dispatch(deleteProduct(slug))
           }

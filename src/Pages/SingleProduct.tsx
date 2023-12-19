@@ -27,12 +27,6 @@ const SingleProduct =() =>{
    
     },[])
 
-    if(isLoading){
-        return <p> loading the Data now ..</p>
-        }
-       if (error){
-        return <p>{error}</p>
-       }
        const handelAddCart=(product: Product)=>{
         console.log(product)
         dispatch(addToCart(product))

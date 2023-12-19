@@ -11,7 +11,7 @@ const AdminRoute = () => {
     const {isLoggedIn ,userData}= useSelector((state:RootState) => state.usersR)
      const location=useLocation()
 
-    return isLoggedIn && userData?.role ==='admin'?
+    return isLoggedIn && userData?.isAdmin ?
      <Outlet/>:<Login pathName={location.pathname}/>
 
 }

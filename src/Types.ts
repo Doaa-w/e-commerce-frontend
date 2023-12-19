@@ -63,7 +63,7 @@ export type UsersState ={
   error:null|string
   isLoading:boolean
   isLoggedIn:boolean
-  userData:User |null
+  userData:User | null 
 }
 
  export type searchProduct={

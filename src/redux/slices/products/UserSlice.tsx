@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import {  User, UsersState } from '../../../Types'
+import {  UsersState } from '../../../Types'
 
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
@@ -10,8 +10,8 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
     return response.data.payload
     })
 
-    export const deleteUsers =  async (id:string) => {
-      const response = await axios.delete(`http://localhost:5050/api/Users/${id}`)
+    export const deleteUsers =  async (_id:string) => {
+      const response = await axios.delete(`http://localhost:5050/api/Users/${_id}`)
       return response.data.payload
       }
       export const registeredUser= async (user:object)=>{
@@ -21,6 +21,16 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
         console.log(Error)
         return response.data.payload
       }
+      export const userLogIn = createAsyncThunk('users/userLogIn' , async (user:object) => {
+        const response = await axios.post('http://localhost:5050/api/auth/login',user)
+        return response.data.payload
+        console.log(response.data)
+        })
+        export const userLogOut = createAsyncThunk('users/userLogOut' , async () => {
+          const response = await axios.post('http://localhost:5050/api/auth/logout')
+          return response.data.payload
+          console.log(response.data)
+          })
 
     const data = localStorage.getItem('loginData') !== null ? 
     JSON.parse(String(localStorage.getItem('loginData'))) :[]
@@ -36,22 +46,22 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
   name:"User",
   initialState,
   reducers: {
-    login :(state,action)=>{
-      state.isLoggedIn=true
-      state.userData=action.payload
-      localStorage.setItem('loginData', JSON.stringify({
-        isLoggedIn : state.isLoggedIn ,
-        userData:state.userData
-      }))
-    },
-    logout :(state , action)=>{
-      state.isLoggedIn=false
-      state.userData=action.payload
-      localStorage.setItem('loginData', JSON.stringify({
-        isLoggedIn : state.isLoggedIn ,
-        userData:state.userData
-      }))
-    },
+    // login :(state,action)=>{
+    //   state.isLoggedIn=true
+    //   state.userData=action.payload
+    //   localStorage.setItem('loginData', JSON.stringify({
+    //     isLoggedIn : state.isLoggedIn ,
+    //     userData:state.userData
+    //   }))
+    // },
+    // logout :(state , action)=>{
+    //   state.isLoggedIn=false
+    //   state.userData=action.payload
+    //   localStorage.setItem('loginData', JSON.stringify({
+    //     isLoggedIn : state.isLoggedIn ,
+    //     userData:state.userData
+    //   }))
+    // },
     // deleteUser:(state , action) =>{
     //   const filterUsers =state.users.filter((user)=> user._id !== action.payload)
     //   state.users=filterUsers
@@ -91,8 +101,27 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
     .addCase(fetchUsers.rejected , (state)=>{
       state.isLoading=false;
       state.error= "error we can not fech Data";
-    })}
-    
+    })
+    .addCase(userLogIn.fulfilled , (state , action )=>{
+        state.isLoggedIn=true
+      state.userData=action.payload.payload
+      localStorage.setItem('loginData', JSON.stringify({
+        isLoggedIn : state.isLoggedIn ,
+        userData:state.userData
+      })
+      )
+
+    })
+    .addCase(userLogOut.fulfilled , (state )=>{
+    state.isLoggedIn=false
+    state.userData = null
+    localStorage.setItem('loginData', JSON.stringify({
+      isLoggedIn : state.isLoggedIn ,
+      userData:state.userData
+    }))
+
+   })
+  } 
 });
-export const {login ,logout  ,addUser , updateUser}=UsersReducer.actions
+export const { addUser , updateUser}=UsersReducer.actions
 export default UsersReducer.reducer

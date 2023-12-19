@@ -26,9 +26,9 @@ const UserOrders = () => {
      dispatch(fetchUsers())
     },[dispatch]); 
    
-    const handelDelete= async (id:string)=>{
+    const handelDelete= async (_id:string)=>{
         try {
-          const respones = await deleteUsers(id)
+          const respones = await deleteUsers(_id)
           dispatch(fetchUsers())
         } catch (error) {
           console.log(error)
@@ -68,6 +68,7 @@ const UserOrders = () => {
                    >       
               <TableCell align="center">{user.first_name} </TableCell>
               <TableCell align="center"> {user.email}</TableCell>
+              <TableCell align="center"> Visitor</TableCell>
                  <TableCell>  <Button variant="contained" size="small" color="error" 
                         onClick={()=> handelDelete(user._id)} >Remove User</Button></TableCell>
             </TableRow>

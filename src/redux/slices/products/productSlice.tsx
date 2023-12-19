@@ -7,6 +7,7 @@ import axios from 'axios'
 export const fetchProducts = createAsyncThunk('products/fetchProducts' , async () => {
 const response = await axios.get('http://localhost:5050/api/products')
 return response.data.payload
+console.log(response.data.payload)
 })
 
 export const fetchSingleProducts =  createAsyncThunk ('products/fetchSingleProducts' ,
@@ -18,7 +19,7 @@ export const fetchSingleProducts =  createAsyncThunk ('products/fetchSingleProdu
   export const deleteProduct = createAsyncThunk('products/deleteProduct' , async (slug:string) => {
     const response = await axios.delete(`http://localhost:5050/api/products/${slug}`)
     return response.data.payload
-    console.log(response.data.message)
+    console.log(response.data)
     })
 
 const initialState: ProductState = {

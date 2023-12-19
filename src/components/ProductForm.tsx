@@ -16,14 +16,14 @@ export function ProductForm({ product, handleSubmit, handleChange }: ProductForm
   return (
     <form onSubmit={handleSubmit} className="p-4 bg-gray-100 rounded-lg">
       <div className="mb-4">
-        <label htmlFor="name" className={labelStyle}>
-          Name:
+        <label htmlFor="title" className={labelStyle}>
+          title:
         </label>
         <input
           type="text"
-          name="name"
-          id="name"
-          value={product.name}
+          name="title"
+          id="title"
+          value={product.title}
           onChange={handleChange}
           className={inputStyle}
         />
@@ -43,7 +43,7 @@ export function ProductForm({ product, handleSubmit, handleChange }: ProductForm
       </div>
       <div className="mb-4">
         <label htmlFor="description" className={labelStyle}>
-          Description:
+          description:
         </label>
         <textarea
           name="description"
@@ -54,40 +54,40 @@ export function ProductForm({ product, handleSubmit, handleChange }: ProductForm
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="categories" className={labelStyle}>
-          Categories: (use comma , to create multiple)
+        <label htmlFor="category" className={labelStyle}>
+          category: (plesse provid the Category Id )
         </label>
         <input
           type="text"
-          name="categories"
-          id="categories"
-          value={product.categories.join(',')}
+          name="category"
+          id="category"
+          value={product.category}
           onChange={handleChange}
           className={inputStyle}
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="variants" className={labelStyle}>
-          Variants: (use comma , to create multiple)
+        <label htmlFor="quantity" className={labelStyle}>
+          quantity:
         </label>
         <input
           type="text"
-          name="variants"
-          id="variants"
-          value={product.variants.join(',')}
+          name="quantity"
+          id="quantity"
+          value={product.quantity}
           onChange={handleChange}
           className={inputStyle}
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="sizes" className={labelStyle}>
-          Sizes: (use comma , to create multiple)
+        <label htmlFor="price" className={labelStyle}>
+          price:
         </label>
         <input
-          type="text"
-          name="sizes"
-          id="sizes"
-          value={product.sizes.join(',')}
+          type="number"
+          name="price"
+          id="price"
+          value={product.price }
           onChange={handleChange}
           className="w-full px-3 py-2 text-white border rounded-lg focus:outline-none focus:border-blue-400"
         />

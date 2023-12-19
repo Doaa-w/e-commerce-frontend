@@ -50,7 +50,7 @@ export function ProductsManager() {
         <ul>
           {theProducts.length >0 && theProducts.map((product:Product) => (
             <li key={product._id} className="flex items-center gap-4 text-2xl mb-2">
-              <img src={`http://localhost:5050/${product.image}`} alt={product.title} width="50" />
+              <img src={`http://localhost:5050/${product.image}`} alt={product.title} width="70" />
               <span>{product.title}</span>
               <button
                 className=" text-red-400 text-xs"

@@ -14,6 +14,8 @@ export function ProductForm({ product, handleSubmit, handleChange }: ProductForm
   const labelStyle = 'block text-sm font-medium text-gray-600'
 
   return (
+    <div>
+         <h3 className="text-2xl font-bold">Add a new product 1</h3>
     <form onSubmit={handleSubmit} className="p-4 bg-gray-100 rounded-lg">
       <div className="mb-4">
         <label htmlFor="title" className={labelStyle}>
@@ -98,5 +100,6 @@ export function ProductForm({ product, handleSubmit, handleChange }: ProductForm
         Add Product
       </button>
     </form>
+    </div>
   )
 }

@@ -8,7 +8,7 @@ import { Button } from '@mui/material'
 type categoryFormProps = {
     category: Category
   handleSubmit: (e: FormEvent) => void
-  handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  handleChange: (e: ChangeEvent<HTMLInputElement >) => void
 }
 
 export function CategoryForm({ category, handleSubmit, handleChange }: categoryFormProps) {
@@ -25,15 +25,6 @@ export function CategoryForm({ category, handleSubmit, handleChange }: categoryF
           value={category.name}
           onChange={handleChange}
           className={inputStyle} required />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="id" className={labelStyle}>  id: </label>
-        <input  type="number"  name="id" id="id"
-          value={category.id}
-          onChange={handleChange}
-          className={inputStyle}
-          required
-        />
       </div>
         <Button variant="contained" size="small" color="success" type="submit"> Add Category</Button> 
     </form> 

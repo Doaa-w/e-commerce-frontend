@@ -14,7 +14,10 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
       const response = await axios.delete(`http://localhost:5050/api/categories/${slug}`)
       return response.data.payload
       }
-    
+      export const createCategories = createAsyncThunk('categories/createCategories' , async (name:string) => {
+        const response = await axios.post('http://localhost:5050/api/categories',{name:name})
+        return response.data.payload
+        })
     const initialState :CategoryState = {
       categories: [],
       error: null,
@@ -29,9 +32,9 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
     //   const filterCategory =state.categories.filter((Category)=> Category._id !== action.payload)
     //   state.categories=filterCategory
     // },
-    addCategory: (state, action ) => {
-      state.categories = [action.payload.category, ...state.categories] 
-      },
+    // addCategory: (state, action ) => {
+    //   state.categories = [action.payload.category, ...state.categories] 
+    //   },
    updateCategory:(state, action) =>{
     const {id , name }= action.payload
     const foundCategory =state.categories.find((Category) =>Category._id  ===id)
@@ -50,11 +53,16 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
       state.isLoading = false
       
     })
+    .addCase(createCategories.fulfilled , (state , action)=>{
+      console.log(action.payload.payload)
+      state.categories.push(action.payload)
+      
+    })
     .addCase(fetchCategories.rejected , (state)=>{
       state.isLoading=false;
       state.error= "error we can not fech Data";
     })}
     
 });
-export const { addCategory ,updateCategory} = CategoryReducer.actions
+export const {updateCategory} = CategoryReducer.actions
 export default CategoryReducer.reducer;

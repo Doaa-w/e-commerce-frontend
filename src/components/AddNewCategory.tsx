@@ -2,55 +2,46 @@
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { CategoryForm } from './CategortyForm'
-import { addCategory } from '../redux/slices/products/CategorySlice'
+import { createCategories } from '../redux/slices/products/CategorySlice'
 import { AppDispatch } from '../redux/store'
-import { Category } from '../Types'
+import { Button } from '@mui/material'
 
 
-const initialCategoriesState: Category = {
-  id: 0,
-  name: '',
 
-}
 
 export function AddNewCategory() {
   const dispatch = useDispatch<AppDispatch>()
-  const [category, setCategory] = useState<Category>(initialCategoriesState)
+  const [category, setCategory] = useState('')
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-
-    const isList = name === 'categories' || name === 'variants' || name === 'sizes'
-    if (isList) {
-      setCategory({
-        ...category,
-        [name]: value.split(',')
-      })
-      return
-    }
-
-    setCategory({
-      ...category,
-      [name]: value
-    })
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+   setCategory(event?.target.value)
+  
   }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    console.log('New category data:', category)
-    category.id = +new Date()
-    console.log('Category:', category)
 
-    dispatch(addCategory({ category}))
+    dispatch(createCategories(category))
+    setCategory('')
 
-    setCategory(initialCategoriesState)
   }
-
+    const inputStyle =
+    'w-40 px-3 py-2 text-black border rounded-lg focus:outline-none focus:border-blue-400 bg-blue-500'
+  const labelStyle = 'block text-sm font-medium text-gray-600'
   return (
     <div>
       <h3 className="text-2xl font-bold">Add Category</h3>
-      <CategoryForm handleSubmit={handleSubmit} handleChange={handleChange} category={category} />
+    <form onSubmit={handleSubmit} className="p-1 bg-gray-5 rounded-lg">
+      <div className="mb-4">
+        <label htmlFor="name" className={labelStyle}> Name: </label>
+        <input type="text" name="name" id="name"
+          value={category}
+          onChange={handleChange}
+          className={inputStyle} required />
+      </div>
+        <Button variant="contained" size="small" color="success" type="submit"> Add Category</Button> 
+    </form> 
+
     </div>
   )
 }

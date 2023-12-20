@@ -26,7 +26,7 @@ const handelOnChange =(event:ChangeEvent<HTMLInputElement>) => {
     }
 useEffect(() => {
     if(userData){
-        navigate(pathName? pathName: `/dashboard/${userData?.isAdmin ? 'Admin': 'User'}`)
+        navigate(pathName? pathName: `/dashboard/${userData && userData?.isAdmin ? 'Admin': 'User'}`)
     }
    },[userData ,navigate ,pathName]);
 

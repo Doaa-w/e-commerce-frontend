@@ -104,7 +104,7 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
     })
     .addCase(userLogIn.fulfilled , (state , action )=>{
         state.isLoggedIn=true
-      state.userData=action.payload.payload
+      state.userData=action.payload
       localStorage.setItem('loginData', JSON.stringify({
         isLoggedIn : state.isLoggedIn ,
         userData:state.userData

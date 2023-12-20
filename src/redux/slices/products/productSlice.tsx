@@ -21,7 +21,12 @@ export const fetchSingleProducts =  createAsyncThunk ('products/fetchSingleProdu
     return response.data.payload
     console.log(response.data)
     })
-
+    export const createProduct =  createAsyncThunk ('products/createProduct' ,
+    async (products:Product) => {
+     const response = await axios.post('http://localhost:5050/api/products/',{products})
+     console.log(response)
+     return response.data.payload
+     })
 const initialState: ProductState = {
   products: [],
   Product:[],
@@ -64,10 +69,10 @@ export const productsReducer = createSlice({
       state.isLoading = false
       state.products = action.payload
     },
-    addProduct: (state, action :{payload :{product: Product }}) => {
-      // let's append the new product to the beginning of the array
-      state.products = [action.payload.product, ...state.products]
-    },
+    // addProduct: (state, action :{payload :{product: Product }}) => {
+    //   // let's append the new product to the beginning of the array
+    //   state.products = [action.payload.product, ...state.products]
+    // },
     // removeProduct: (state, action:{payload :{productId:number}}) => {
     //   const filteredItems = state.products.filter((product) => Number(product._id) !== action.payload.productId)
     //   state.products = filteredItems
@@ -94,6 +99,10 @@ export const productsReducer = createSlice({
     }) 
     .addCase(fetchSingleProducts.fulfilled,(state,action)=>{
       state.SingleProduct = action.payload
+    })
+    .addCase(createProduct.fulfilled,(state,action)=>{
+      state.products.push(action.payload)
+      console.log(action.payload)
       
     })
     .addMatcher(
@@ -114,5 +123,5 @@ export const productsReducer = createSlice({
 
 )
   
-export const {productsRequest,productsSuccess,addProduct, searchProduct ,sortProducts } = productsReducer.actions
+export const {productsRequest,productsSuccess,  searchProduct ,sortProducts } = productsReducer.actions
 export default productsReducer.reducer

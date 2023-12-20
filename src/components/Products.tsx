@@ -53,7 +53,7 @@ const Products = ()=>{
                  <Card sx={{maxWidth: 300}} key={product._id} className="shadow-xl  grid justify-items-center" >
                   <CardMedia
                    sx={{ height: 200 , width: 150}}
-                   src={`http://localhost:5050/${product.image}`} 
+                   src={product.image}
                    //{"http://localhost:5050/"+`${product.image}`}
                    //{`http://localhost:5050/${product.image}`} 
                    title={product.title}

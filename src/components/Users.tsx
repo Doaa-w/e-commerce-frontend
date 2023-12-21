@@ -6,7 +6,7 @@ import { AppDispatch, RootState } from "../redux/store";
 import {  deleteUsers, fetchUsers } from "../redux/slices/products/UserSlice";
 import AdminSideBar from "./AdminSideBar";
 
-import { Button } from "@mui/material";
+import { Button, InputLabel, NativeSelect } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,6 +15,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import NativeSelectInput from "@mui/material/NativeSelect/NativeSelectInput";
 
 
 const UserOrders = () => {
@@ -36,12 +37,7 @@ const UserOrders = () => {
         }
     }
    
-    if(isLoading){
-     return <p> loading the Users  ..</p>
-     }
-    if (error){
-     return <p>{error}</p>
-    }
+ 
     return (
 
          <div className="flex flex-wrap">
@@ -52,9 +48,9 @@ const UserOrders = () => {
       <Table sx={{minWidth: 200 }} aria-label="orders table">
         <TableHead>
           <TableRow>
-            <TableCell  align="center"> user name </TableCell>
-            <TableCell align="center" > user email </TableCell>
-            <TableCell align="center" > user role </TableCell>
+            <TableCell  align="center"> User Name </TableCell>
+            <TableCell align="center" > User E-mail </TableCell>
+            <TableCell align="center" > User Role </TableCell>
             <TableCell align="center" >  </TableCell>
             </TableRow>
         </TableHead>
@@ -67,8 +63,19 @@ const UserOrders = () => {
                    >       
               <TableCell align="center">{user.first_name} </TableCell>
               <TableCell align="center"> {user.email}</TableCell>
-              <TableCell align="center"> Visitor</TableCell>
-                 <TableCell> 
+              <TableCell align="center"> 
+              <InputLabel variant="standard" htmlFor="user-role">
+            <NativeSelect defaultValue={"User"} inputProps={{
+              name:"role",
+              id:'user-role'
+            }}>
+              <option >User</option>
+              <option>Admin</option>
+            </NativeSelect>
+            </InputLabel>
+            </TableCell>
+                 <TableCell>
+                   
                    {/* <Button variant="contained" size="small" color="error" 
                         onClick={()=> handelDelete(user._id)} >Remove User</Button>*/}
 

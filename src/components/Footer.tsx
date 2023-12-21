@@ -7,9 +7,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 const Footer = () => {
     
     return (
-        <div >
-            <p className='bg-white flex justify-center'>Follow Us On :</p>
-        <div className='flex items-center justify-center space-x-12 p-5 mb-0 bg-white'>
+        <div className='p-5 mb-0 bg-white space-y-4'>
+            <p className=' h-10 flex justify-center text-blue-600 text-xl'>Follow Us On :</p>
+        <div className='flex items-center justify-center space-x-12 '>
            <a href='https://twitter.com/'>
             <TwitterIcon />
             </a>
@@ -20,6 +20,7 @@ const Footer = () => {
             <FacebookIcon/>
             </a>
         </div>
+       <i className='flex items-center justify-center  text-blue-600 '> &copy; SDA-DOAA.ALOTIBI</i>
         </div>
     )
 }

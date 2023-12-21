@@ -12,6 +12,9 @@ import { AppDispatch, RootState } from '../redux/store'
 
 import { Product } from '../Types'
 import { TextField } from '@mui/material'
+import { Button  } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AdminSideBar from './AdminSideBar'
 
 export function ProductsManager() {
  
@@ -70,14 +73,14 @@ export function ProductsManager() {
   
 
   return (
-
-    <div className="flex flex-wrap m-8">
-      <TextField label="searching for .."  onChange={handelSearch} value={searchTerm}  /> 
+    <div >
+ <TextField label="searching for .."  onChange={handelSearch} value={searchTerm} className='m-8' /> 
+    <div className="flex flex-wrap m-6">   
     <div className="grid grid-cols-1 md:grid-cols-2 w-full mt-8">
-    <div>
+    <div  >
          <h3 className="text-2xl font-bold">Add a new product </h3>
     <form onSubmit={handleSubmit} className="p-4 bg-gray-100 rounded-lg">
-      <div className="mb-4">
+      <div className="mb-4 flex flex-wrap">
         <label htmlFor="title" className={labelStyle}>
           title:
         </label>
@@ -168,22 +171,27 @@ export function ProductsManager() {
     </form>
     </div>
       {/* <NewProductWrapper /> */}
-      <div className="card grid gap-4">
+      <div className="  card grid gap-4">
         <ul>
           {theProducts.length >0 && theProducts.map((product:Product) => (
             <li key={product._id} className="flex items-center gap-4 text-2xl mb-2">
               <img src={`http://localhost:5050/${product.image}`} alt={product.title} width="70" />
               <span>{product.title}</span>
-              <button
+              {/* <button
                 className=" text-red-400 text-xs"
                 onClick={() => handelDelet(product.slug )}>
                 delete
-              </button>
+              </button> */}
+
+               <Button variant="outlined" size="small" startIcon={<DeleteIcon/>}
+                           onClick={() => handelDelet(product.slug )}>Remove</Button>
             </li>
           ))}
         </ul>
       </div>
     </div>
     </div>
+    </div>
   )
 }
+export default ProductsManager

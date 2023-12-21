@@ -7,7 +7,6 @@ import axios from 'axios'
 export const fetchProducts = createAsyncThunk('products/fetchProducts' , async () => {
 const response = await axios.get('http://localhost:5050/api/products')
 return response.data.payload
-console.log(response.data.payload)
 })
 
 export const fetchSingleProducts =  createAsyncThunk ('products/fetchSingleProducts' ,
@@ -22,9 +21,10 @@ export const fetchSingleProducts =  createAsyncThunk ('products/fetchSingleProdu
     console.log(response.data)
     })
     export const createProduct =  createAsyncThunk ('products/createProduct' ,
-    async (products:Product) => {
-     const response = await axios.post('http://localhost:5050/api/products/',{products})
+    async (formData:FormData) => {
+     const response = await axios.post('http://localhost:5050/api/products/',formData)
      console.log(response)
+     console.log(formData)
      return response.data.payload
      })
 const initialState: ProductState = {
@@ -90,6 +90,7 @@ export const productsReducer = createSlice({
     })
     .addCase(fetchProducts.fulfilled,(state,action)=>{
       state.products = action.payload
+      console.log(action.payload)
       state.isLoading = false
       
     })
@@ -102,7 +103,7 @@ export const productsReducer = createSlice({
     })
     .addCase(createProduct.fulfilled,(state,action)=>{
       state.products.push(action.payload)
-      console.log(action.payload)
+      console.log(action.payload.message)
       
     })
     .addMatcher(

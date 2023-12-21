@@ -13,28 +13,41 @@ import { NewProductWrapper } from './NewProductWrapper'
 
 import { Product } from '../Types'
 import { TextField } from '@mui/material'
-import Products from './Products'
 
-// const product type={
-//   product: Product
-// }
 export function ProductsManager() {
  
     const {products,  searchTerm}= useSelector((state:RootState) =>
         state.productsR );
         const dispatch =useDispatch<AppDispatch> ();
-        const [product, setProduct] = useState('')
-      
+        const [product, setProduct] = useState({
+          title: '',
+          description: '',
+          image: ' ', 
+          price: 0 ,
+          category: '',
+          quantity:'',
+        })
+      console.log(product)
         const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-          setProduct(event.target.value)
+          setProduct((prevProduct)=>{
+            return {...prevProduct ,[event.target.name]:event.target.value}
+          })
         
         }
       
-        const handleSubmit = (e: FormEvent) => {
+        const handleSubmit = async(e: FormEvent) => {
           e.preventDefault()
-      
-          // dispatch(createProduct())
-          setProduct('')
+        const formData= new FormData()
+        formData.append('title',product.title)
+        formData.append('description' , product.description)
+        formData.append('image' , product.image)
+        formData.append('price' , String(product.price))
+        formData.append('category' , product.category)
+        formData.append('quantity' , product.quantity)
+
+         dispatch(createProduct(formData))
+         dispatch(fetchProducts())
+       console.log("formdata",formData)
       
         }
         useEffect(() => {
@@ -72,9 +85,10 @@ export function ProductsManager() {
           type="text"
           name="title"
           id="title"
-          value={product}
+          value={product.title}
           onChange={handleChange}
           className={inputStyle}
+          required
         />
       </div>
       <div className="mb-4">
@@ -85,7 +99,7 @@ export function ProductsManager() {
           type="text"
           name="image"
           id="image"
-          value={product}
+          value={product.image}
           onChange={handleChange}
           className={inputStyle}
         />
@@ -98,9 +112,10 @@ export function ProductsManager() {
         type='text'
           name="description"
           id="description"
-          value={product}
+          value={product.description}
           onChange={handleChange}
           className={inputStyle}
+          required
         />
       </div>
       <div className="mb-4">
@@ -111,9 +126,10 @@ export function ProductsManager() {
           type="text"
           name="category"
           id="category"
-          value={product}
+          value={product.category}
           onChange={handleChange}
           className={inputStyle}
+          required
         />
       </div>
       <div className="mb-4">
@@ -124,9 +140,10 @@ export function ProductsManager() {
           type="text"
           name="quantity"
           id="quantity"
-          value={product}
+          value={product.quantity}
           onChange={handleChange}
           className={inputStyle}
+          required
         />
       </div>
       <div className="mb-4">
@@ -137,8 +154,9 @@ export function ProductsManager() {
           type="number"
           name="price"
           id="price"
-          value={product }
+          value={product.price}
           onChange={handleChange}
+          required
           className="w-full px-3 py-2 text-white border rounded-lg focus:outline-none focus:border-blue-400"
         />
       </div>

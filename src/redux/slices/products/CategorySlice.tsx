@@ -18,6 +18,7 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
         const response = await axios.post('http://localhost:5050/api/categories',{name:name})
         return response.data.payload
         })
+        
     const initialState :CategoryState = {
       categories: [],
       error: null,

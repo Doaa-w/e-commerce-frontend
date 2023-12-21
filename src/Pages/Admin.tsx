@@ -7,11 +7,11 @@ import { Toolbar } from '@mui/material';
 const Admin = () =>{
   
   return (
-  <div > 
+  <div className='flex flex-wrap'> 
     <AdminSideBar/>
-    <h1  className="flex  justify-center mt-4 mb-4">All The Products</h1>  <Toolbar>
+    {/* <h1  className="flex  justify-center mt-4 mb-4">All The Products</h1>  <Toolbar> */}
   <ProductsManager />
-  </Toolbar>
+ 
  
   </div>
 )}

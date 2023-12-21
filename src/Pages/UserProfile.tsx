@@ -41,8 +41,8 @@ const UserProfile = ()=>{
         }
 
     return(
-        <div>
-            <h1  className= "flex justify-center"> This Is {`${userData?.first_name}`} page </h1>
+        <div className='h-full'>
+            <h1 className='flex justify-center' > This Is {`${userData?.first_name}`} page </h1>
             <Container maxWidth="sm">
         <div className= " p-4 m-12 bg-white shadow-lg">
         <Typography gutterBottom variant="h6" component="div">

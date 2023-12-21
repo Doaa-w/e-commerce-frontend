@@ -16,23 +16,17 @@ const AdminProducts = ()=>{
          dispatch(fetchProducts())
         },[dispatch]); 
        
-       
-        if(isLoading){
-         return <p> loading the Data now ..</p>
-         }
-        if (error){
-         return <p>{error}</p>
-        }
         return (
-            <div className="prdouctsContainer">
+            <div className="prdouctsContainer flex flex-wrap">
+                
                 <AdminSideBar/>
-                <h2>All The Products</h2>
+                <h2>All The Products 3</h2>
                 <div>
                     {products.length >0 && products.map((product)=>{
                         return(
-                            <article key={product.id}>
+                            <article key={product._id}>
                             <img src={product.image} width={80}/>
-                            <h2>{product.name}</h2>
+                            <h2>{product.title}</h2>
                             <p>{product.description}</p>
                             </article>
                             )})}

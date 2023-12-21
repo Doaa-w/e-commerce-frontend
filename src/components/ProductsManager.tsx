@@ -8,8 +8,7 @@ import {
   fetchProducts,
   searchProduct,
 } from '../redux/slices/products/ProductSlice'
-import { AppDispatch, RootState } from '../redux/store'
-import { NewProductWrapper } from './NewProductWrapper'
+import { AppDispatch, RootState } from '../redux/store' 
 
 import { Product } from '../Types'
 import { TextField } from '@mui/material'
@@ -72,7 +71,8 @@ export function ProductsManager() {
 
   return (
 
-    <div><TextField label="searching for .."  onChange={handelSearch} value={searchTerm}  /> 
+    <div className="flex flex-wrap m-8">
+      <TextField label="searching for .."  onChange={handelSearch} value={searchTerm}  /> 
     <div className="grid grid-cols-1 md:grid-cols-2 w-full mt-8">
     <div>
          <h3 className="text-2xl font-bold">Add a new product </h3>

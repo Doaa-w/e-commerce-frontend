@@ -7,6 +7,7 @@ import {  deleteUsers, fetchUsers } from "../redux/slices/products/UserSlice";
 import AdminSideBar from "./AdminSideBar";
 
 import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -43,11 +44,9 @@ const UserOrders = () => {
     }
     return (
 
-         <div >
+         <div className="flex flex-wrap">
               <AdminSideBar/>
-            <h1  className="flex  justify-center mt-4 mb-4">All The users</h1>
-            
-            <div className="usersContainer mb-4 ">
+            <div className="usersContainer pl-20 ml-20 mb-20 mt-8 flex flex-wrap  w-3/4">
 
             <TableContainer component={Paper}>
       <Table sx={{minWidth: 200 }} aria-label="orders table">
@@ -69,8 +68,13 @@ const UserOrders = () => {
               <TableCell align="center">{user.first_name} </TableCell>
               <TableCell align="center"> {user.email}</TableCell>
               <TableCell align="center"> Visitor</TableCell>
-                 <TableCell>  <Button variant="contained" size="small" color="error" 
-                        onClick={()=> handelDelete(user._id)} >Remove User</Button></TableCell>
+                 <TableCell> 
+                   {/* <Button variant="contained" size="small" color="error" 
+                        onClick={()=> handelDelete(user._id)} >Remove User</Button>*/}
+
+                         <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>}
+                           onClick={()=> handelDelete(user._id)}>Remove</Button></TableCell>
+                           </TableCell> 
             </TableRow>
           ))}
         </TableBody>

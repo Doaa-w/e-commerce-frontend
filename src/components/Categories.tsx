@@ -9,13 +9,14 @@ import AdminSideBar from "./AdminSideBar";
 import { AddNewCategory } from "./AddNewCategory";
 
 import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import Card from '@mui/material/Card';
 
 const categories = () => {
 
@@ -27,12 +28,6 @@ const categories = () => {
      dispatch(fetchCategories())
     },[dispatch]); 
 
-    if(isLoading){
-     return <p> loading the Data now ..</p>
-     }
-    if (error){
-     return <p>{error}</p>
-    }
      const handelDelete= async (slug:string)=>{
       try {
         const respones = await deletecategory(slug)
@@ -43,19 +38,13 @@ const categories = () => {
   
 }
     return (
-        <div>
+        <div className="flex flex-wrap">
           <AdminSideBar/>
-          <h1  className="flex  justify-center mt-4 mb-4">All The Categories</h1>
-        <div className="categoriesContainer flex items-center mt-6 mb-7">
-            <AddNewCategory/>
-            <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 200 }} aria-label="category table">
-        <TableHead>
-          <TableRow>
-            <TableCell  align="center"> category name</TableCell>
-            <TableCell align="center" > </TableCell>
-            </TableRow>
-        </TableHead>
+         <AddNewCategory/>
+        <div className="categoriesContainer  items-center mt-6 mb-7">
+            
+            <TableContainer component={Card}>
+      <Table sx={{minWidth: 650}} aria-label="category table">
         <TableBody>
 
                 {categories.length >0 && categories.map((category)=>(
@@ -63,8 +52,8 @@ const categories = () => {
                      key={category._id}
                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                    >
-                     <TableCell align="center"> {category.name}</TableCell>
-                     <TableCell align="center"> <Button variant="contained" size="small" color="error" onClick={()=> handelDelete(category.name)}>Remove</Button></TableCell>
+                     <TableCell align="left"> {category.name}</TableCell>
+                     <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>} onClick={()=> handelDelete(category.name)}>Remove</Button></TableCell>
 
                   </TableRow>
                             ))}

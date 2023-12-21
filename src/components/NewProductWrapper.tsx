@@ -2,12 +2,12 @@ import { useState, ChangeEvent, FormEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { ProductForm } from './ProductForm'
-import { addProduct } from '../redux/slices/products/ProductSlice'
+// import { addProduct } from '../redux/slices/products/ProductSlice'
 import { AppDispatch } from '../redux/store'
 import { Product } from '../Types'
 
 const initialProductState: Product = {
-  id: 0,
+  _id: 0,
   name: '',
   image: '',
   description: '',
@@ -44,10 +44,10 @@ export function NewProductWrapper() {
     // Send the product data to your backend or in this case send it to Redux
     console.log('New product data:', product)
     // let's add Id property to the object (usually IDs are generated automatically on the backend)
-    product.id = +new Date()
+    // product._id = +new Date()
     console.log('product:', product)
 
-    dispatch(addProduct({ product }))
+    // dispatch(addProduct({ product }))
     // Reset the form
     setProduct(initialProductState)
   }

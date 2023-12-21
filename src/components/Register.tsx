@@ -83,7 +83,7 @@ const Register = () =>{
     <div className='flex justify-center '>
           
      <form className=' p-12 'onSubmit={handelSubmit} >
-    <Typography gutterBottom variant="h4" component="div" className="mb-10">Please Provid :</Typography>
+    <Typography gutterBottom variant="h4" component="div" className="mb-10 text-blue-600 ">Please Provid :</Typography>
     <Input placeholder="first Name" type='text' name="first_name" value={user.first_name} onChange={handelChange} required className="mb-4" />
     <p className="text-red-500">{first_nameError}</p>
     <Input placeholder="last Name" type='text' name="last_name" value={user.last_name} onChange={handelChange} required className="mb-4" />

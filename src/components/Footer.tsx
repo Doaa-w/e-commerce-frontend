@@ -20,7 +20,7 @@ const Footer = () => {
             <FacebookIcon/>
             </a>
         </div>
-       <i className='flex items-center justify-center  text-blue-600 '> &copy; SDA-DOAA.ALOTIBI</i>
+       <i className='flex items-center justify-center  text-blue-600 '> Copyright &copy; 2023 SDA-DOAA.ALOTIBI</i>
         </div>
     )
 }

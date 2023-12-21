@@ -10,8 +10,8 @@ const Cart =()=>{
     const {cartItems}=useSelector((state:RootState)=> state.cartR)
     const dispatch =useDispatch<AppDispatch> ();
     
-    const handelRemoveFromCart =(id:number)=>{
-        dispatch(removeFromCart(id))
+    const handelRemoveFromCart =(_id:string)=>{
+        dispatch(removeFromCart(_id))
     }
     const handelRemoveAllCart =()=>{
         dispatch(removeAllCart())
@@ -36,18 +36,18 @@ const Cart =()=>{
                         <div className=" ">
                         {cartItems.map((cartItem)=>{
                             return(
-                                <List key={cartItem.id} className="flex " 
+                                <List key={cartItem._id} className="flex " 
                                 dense sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }
                                 } >
                                     <div>
-                                    <img src={cartItem.image} width={150} alt={cartItem.name}/>
+                                    <img src={`http://localhost:5050/${cartItem.image}`} width={150} alt={cartItem.title}/>
                                     </div>
                                     <div >
-                                    <p>{cartItem.name}</p>
+                                    <p>{cartItem.title}</p>
                                     <p>{cartItem.description}</p>
                                     <p>{cartItem.price} $</p>
                                         <Button variant="contained" size="small" color="error" 
-                                        onClick= {()=> {handelRemoveFromCart(cartItem.id)}} >Remove</Button>
+                                        onClick= {()=> {handelRemoveFromCart(cartItem._id)}} >Remove</Button>
                                         
                                     </div>
                                     

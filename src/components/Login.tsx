@@ -35,7 +35,6 @@ const handelSubmit= async (event:FormEvent)=>{
     try {
       dispatch(userLogIn(user))
     console.log(userData)
-    console.log(userLogIn(user))  
     } catch (error) {
        console.log(error) 
     }

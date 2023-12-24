@@ -6,7 +6,7 @@ import { AppDispatch, RootState } from "../redux/store";
 import {  deleteUsers, fetchUsers, grantRole } from "../redux/slices/products/UserSlice";
 import AdminSideBar from "./AdminSideBar";
 
-import { Button, InputLabel, NativeSelect } from "@mui/material";
+import { Button, InputLabel } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,12 +15,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import NativeSelectInput from "@mui/material/NativeSelect/NativeSelectInput";
+
 
 
 const UserOrders = () => {
 
-    const {users, isLoading ,error}= useSelector((state:RootState) =>
+    const {users }= useSelector((state:RootState) =>
     state.usersR );
     const dispatch =useDispatch<AppDispatch> ();
 
@@ -70,14 +70,10 @@ const UserOrders = () => {
               <TableCell align="center"> 
               <InputLabel variant="standard" htmlFor="user-role">
               <TableCell align="center"> <Button variant="outlined" size="small" 
-                           onClick={()=> handelAdmin(user._id)}>Make As Admin</Button></TableCell>
+                           onClick={()=> handelAdmin(user._id)}>Make As Admin &#11088; </Button></TableCell>
             </InputLabel>
             </TableCell>
                  <TableCell>
-                   
-                   {/* <Button variant="contained" size="small" color="error" 
-                        onClick={()=> handelDelete(user._id)} >Remove User</Button>*/}
-
                          <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>}
                            onClick={()=> handelDelete(user._id)}></Button></TableCell>
                            </TableCell> 

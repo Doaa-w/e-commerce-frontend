@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../redux/store"
 import { Button, List, ListSubheader, Typography } from "@mui/material";
 import { removeAllCart, removeFromCart } from "../redux/slices/products/cartSlice";
-
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Cart =()=>{
     const {cartItems}=useSelector((state:RootState)=> state.cartR)
@@ -27,7 +27,7 @@ const Cart =()=>{
     return (
         <div>
             <div>
-            <Typography gutterBottom variant="h5">You Have {cartItems.length>0? cartItems.length:0} Product In Your Cart</Typography>
+            <Typography gutterBottom variant="h5">You Have {cartItems.length>0? cartItems.length:0} Products In Your Cart</Typography>
                 <Typography gutterBottom variant="h6" component="div"className="flex mb-8">Your Total Is :{totalPrice()} $ </Typography>
                 <Button onClick={handelRemoveAllCart} variant="outlined" size="small" color="error">Clear Cart</Button>
                 </div>
@@ -46,9 +46,9 @@ const Cart =()=>{
                                     <p>{cartItem.title}</p>
                                     <p>{cartItem.description}</p>
                                     <p>{cartItem.price} $</p>
-                                        <Button variant="contained" size="small" color="error" 
-                                        onClick= {()=> {handelRemoveFromCart(cartItem._id)}} >Remove</Button>
-                                        
+                                        <Button variant="outlined" size="small" color="error" startIcon={<DeleteIcon/>} 
+                                        onClick= {()=> {handelRemoveFromCart(cartItem._id)}} ></Button>
+                                        {/* <Button variant="outlined" size="small" */}
                                     </div>
                                     
                                     </List>

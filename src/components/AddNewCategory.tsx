@@ -15,7 +15,7 @@ export function AddNewCategory() {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
    setCategory(event?.target.value)
   }
-
+  
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     dispatch(createCategories(category))
@@ -28,7 +28,6 @@ export function AddNewCategory() {
     <div className='flex'>
     <form onSubmit={handleSubmit} className="p-1 bg-gray-5 rounded-lg">
       <div className="mb-4">
-        {/* <label htmlFor="name" className={labelStyle}> Name: </label> */}
         <input type="text" name="name" id="name"
           value={category}
           onChange={handleChange}

@@ -27,6 +27,11 @@ export const fetchSingleProducts =  createAsyncThunk ('products/fetchSingleProdu
      console.log(formData)
      return response.data.payload
      })
+     export const updateThePorduct= async(slug:string | undefined ,productData: Partial<Product>)=>{
+      const response = await axios.put(`http://localhost:5050/api/products/${slug}`,
+       {title: productData.title ,price: productData.price})
+       return response.data
+     }
 const initialState: ProductState = {
   products: [],
   Product:[],
@@ -69,14 +74,7 @@ export const productsReducer = createSlice({
       state.isLoading = false
       state.products = action.payload
     },
-    // addProduct: (state, action :{payload :{product: Product }}) => {
-    //   // let's append the new product to the beginning of the array
-    //   state.products = [action.payload.product, ...state.products]
-    // },
-    // removeProduct: (state, action:{payload :{productId:number}}) => {
-    //   const filteredItems = state.products.filter((product) => Number(product._id) !== action.payload.productId)
-    //   state.products = filteredItems
-    // }
+   
      },
 
   extraReducers:(builder) => {

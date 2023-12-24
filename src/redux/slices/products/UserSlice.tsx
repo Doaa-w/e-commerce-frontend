@@ -14,6 +14,10 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
       const response = await axios.delete(`http://localhost:5050/api/Users/${_id}`)
       return response.data.payload
       }
+      // export const updateTheUser =  async ( user:object) => {
+      //   const response = await axios.put('http://localhost:5050/api/Users/',user)
+      //   return response.data.payload
+      //   }
       export const registeredUser= async (user:object)=>{
         const response = await axios.post('http://localhost:5050/api/users/register',user)
         console.log('reducer', registeredUser)
@@ -66,26 +70,26 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
     //   const filterUsers =state.users.filter((user)=> user._id !== action.payload)
     //   state.users=filterUsers
     // },
-    addUser:(state , action) => {
-      console.log(action.payload)
-      state.users.push(action.payload)
-      console.log(state.users)
+    // addUser:(state , action) => {
+    //   console.log(action.payload)
+    //   state.users.push(action.payload)
+    //   console.log(state.users)
 
-    },
-     updateUser:(state, action) =>{
-      const {id , firstName ,lastName}= action.payload
-      const foundUser =state.users.find((user) =>user._id  ===id)
-      if(foundUser){
-        foundUser.first_name =firstName
-        foundUser.last_name=lastName
-        state.userData=foundUser
-        localStorage.setItem('loginData', JSON.stringify({
-          isLoggedIn : state.isLoggedIn ,
-          userData:state.userData
-        }))
+    // },
+    //  updateUser:(state, action) =>{
+    //   const {id , firstName ,lastName}= action.payload
+    //   const foundUser =state.users.find((user) =>user._id  ===id)
+    //   if(foundUser){
+    //     foundUser.first_name =firstName
+    //     foundUser.last_name=lastName
+    //     state.userData=foundUser
+    //     localStorage.setItem('loginData', JSON.stringify({
+    //       isLoggedIn : state.isLoggedIn ,
+    //       userData:state.userData
+    //     }))
 
-      }
-     },
+    //   }
+    //  },
 
   },
   extraReducers:(builder) =>{
@@ -123,5 +127,5 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
    })
   } 
 });
-export const { addUser , updateUser}=UsersReducer.actions
+// export const { addUser , updateUser}=UsersReducer.actions
 export default UsersReducer.reducer

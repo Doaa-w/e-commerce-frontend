@@ -7,6 +7,7 @@ import {
   deleteProduct,
   fetchProducts,
   searchProduct,
+  updateThePorduct,
 } from '../redux/slices/products/ProductSlice'
 import { AppDispatch, RootState } from '../redux/store' 
 
@@ -21,7 +22,7 @@ export function ProductsManager() {
     const {products,  searchTerm}= useSelector((state:RootState) =>
         state.productsR );
         const dispatch =useDispatch<AppDispatch> ();
-        const [product, setProduct] = useState({
+        const [myProduct, setProduct] = useState({
           title: '',
           description: '',
           image: ' ', 
@@ -29,23 +30,43 @@ export function ProductsManager() {
           category: '',
           quantity:'',
         })
-      console.log(product)
+        const [updatedProduct , setUpdatedProduct]=useState({
+          title: '',
+          price: 0
+        })
+        const [isFormOpen ,setIsFormOpen]= useState(false)
+        const [selectedProduct ,setSelectedProduct]= useState('')
+        const handelFormOpen=(slug: string ,product:Product)=>{
+          try {
+            setIsFormOpen(!isFormOpen)
+            setUpdatedProduct(product)
+            setSelectedProduct(slug)
+          } catch (error) {
+            console.log(error)
+          }
+        }
         const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
           setProduct((prevProduct)=>{
             return {...prevProduct ,[event.target.name]:event.target.value}
           })
         
         }
-      
+      const handelUpdate= async(event:FormEvent)=>{
+        event.preventDefault()
+        await updateThePorduct(selectedProduct,{
+          title:updatedProduct.title,
+          price: updatedProduct.price
+        })
+      }
         const handleSubmit = async(e: FormEvent) => {
           e.preventDefault()
         const formData= new FormData()
-        formData.append('title',product.title)
-        formData.append('description' , product.description)
-        formData.append('image' , product.image)
-        formData.append('price' , String(product.price))
-        formData.append('category' , product.category)
-        formData.append('quantity' , product.quantity)
+        formData.append('title',myProduct.title)
+        formData.append('description' , myProduct.description)
+        formData.append('image' , myProduct.image)
+        formData.append('price' , String(myProduct.price))
+        formData.append('category' , myProduct.category)
+        formData.append('quantity' , myProduct.quantity)
 
          dispatch(createProduct(formData))
          dispatch(fetchProducts())
@@ -88,7 +109,7 @@ export function ProductsManager() {
           type="text"
           name="title"
           id="title"
-          value={product.title}
+          value={myProduct.title}
           onChange={handleChange}
           className={inputStyle}
           required
@@ -102,7 +123,7 @@ export function ProductsManager() {
           type="text"
           name="image"
           id="image"
-          value={product.image}
+          value={myProduct.image}
           onChange={handleChange}
           className={inputStyle}
         />
@@ -115,7 +136,7 @@ export function ProductsManager() {
         type='text'
           name="description"
           id="description"
-          value={product.description}
+          value={myProduct.description}
           onChange={handleChange}
           className={inputStyle}
           required
@@ -129,7 +150,7 @@ export function ProductsManager() {
           type="text"
           name="category"
           id="category"
-          value={product.category}
+          value={myProduct.category}
           onChange={handleChange}
           className={inputStyle}
           required
@@ -143,7 +164,7 @@ export function ProductsManager() {
           type="text"
           name="quantity"
           id="quantity"
-          value={product.quantity}
+          value={myProduct.quantity}
           onChange={handleChange}
           className={inputStyle}
           required
@@ -157,7 +178,7 @@ export function ProductsManager() {
           type="number"
           name="price"
           id="price"
-          value={product.price}
+          value={myProduct.price}
           onChange={handleChange}
           required
           className="w-full px-3 py-2 text-white border rounded-lg focus:outline-none focus:border-blue-400"
@@ -170,26 +191,42 @@ export function ProductsManager() {
       </button>
     </form>
     </div>
-      {/* <NewProductWrapper /> */}
       <div className="  card grid gap-4">
         <ul>
           {theProducts.length >0 && theProducts.map((product:Product) => (
             <li key={product._id} className="flex items-center gap-4 text-2xl mb-2">
               <img src={`http://localhost:5050/${product.image}`} alt={product.title} width="70" />
               <span>{product.title}</span>
-              {/* <button
-                className=" text-red-400 text-xs"
-                onClick={() => handelDelet(product.slug )}>
-                delete
-              </button> */}
+              <Button variant="outlined" size="small" 
+                           onClick={() => handelFormOpen(product.slug , product)}>Edit</Button>
 
-               <Button variant="outlined" size="small" startIcon={<DeleteIcon/>}
-                           onClick={() => handelDelet(product.slug )}>Remove</Button>
+          <Button variant="outlined" size="small" startIcon={<DeleteIcon/>}
+                           onClick={() => handelDelet(product.slug )}></Button>
+
+                           {/* updating */}
+
+                           <div>
+      {isFormOpen && selectedProduct === product.slug  &&(
+        <div>
+          <form action="" onSubmit={handelUpdate}>
+            <input placeholder='title' name='title' value={updatedProduct.title}
+             onChange={(event)=> {setUpdatedProduct({... updatedProduct , title:event.target.value})}}/>
+             <input placeholder='price' name='title' value={updatedProduct.price}
+             onChange={(event)=>{ setUpdatedProduct({... updatedProduct , price:Number(event.target.value)})}}/>
+         <Button type='submit'>update</Button>
+          </form>
+        </div>
+   ) } 
+    </div>
+                           {/* updating */}
             </li>
           ))}
         </ul>
       </div>
+
+      
     </div>
+
     </div>
     </div>
   )

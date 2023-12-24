@@ -53,6 +53,7 @@ export type User ={
   _id:string
   first_name:string
   last_name:string
+  slug:string
   email:string
   password:string
   phone:string

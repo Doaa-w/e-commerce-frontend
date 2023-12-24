@@ -2,7 +2,7 @@
 import {FormEvent,ChangeEvent, useEffect, useState } from 'react';
 import { AppDispatch, RootState } from '../redux/store';
 import {  useDispatch, useSelector } from 'react-redux';
-import { fetchUsers } from '../redux/slices/products/UserSlice';
+import { fetchUsers, updateTheUser } from '../redux/slices/products/UserSlice';
 
 
 import { Button } from '@mui/material';
@@ -23,7 +23,6 @@ const UserProfile = ()=>{
         first_name: userData?.first_name
         })
 
-
     const handelFormOpen=()=>{
         setIsFormOpen(!isFormOpen)
     }
@@ -35,9 +34,8 @@ const UserProfile = ()=>{
         }
         const handelSubmit= async (event:FormEvent)=>{
             event.preventDefault() 
-            // const undateUserDate ={_id: userData?._id, ...user}
-            // dispatch(updateTheUser(userData(user)))
-            // dispatch(updateTheUser())
+            // const updateUserDate ={slug: userData?.slug, ...user} 
+            // await dispatch(updateTheUser(user))
         }
 
     return(
@@ -46,7 +44,7 @@ const UserProfile = ()=>{
            <AccountCircleOutlined color='primary' sx={{fontSize:120}}/>
            <div className='flex flex-col'> 
         <Typography gutterBottom variant="h6" component="div">
-                  Name : {`${userData?.first_name} ${userData?.last_name} `}
+                  Name : {`${userData?.first_name}  ${userData?.last_name} `}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
                   Email:  {`${userData?.email}` }
@@ -59,7 +57,7 @@ const UserProfile = ()=>{
           <div className='pb-4'>
              {isFormOpen && (
              <form onSubmit={handelSubmit} className= " m-12" >
-              <input type='text' name='firstName' onChange={handelChange} value={user.first_name} className='mb-4'/><br/>
+              <input type='text' name='first_name' onChange={handelChange} value={user.first_name} className='mb-4'/><br/>
               <Button variant="contained" type='submit'>update the name</Button>
              </form>
               )}

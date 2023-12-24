@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../redux/store";
-import {  deleteUsers, fetchUsers } from "../redux/slices/products/UserSlice";
+import {  deleteUsers, fetchUsers, grantRole } from "../redux/slices/products/UserSlice";
 import AdminSideBar from "./AdminSideBar";
 
 import { Button, InputLabel, NativeSelect } from "@mui/material";
@@ -36,7 +36,11 @@ const UserOrders = () => {
           console.log(error)
         }
     }
-   
+   const handelAdmin = async(_id:string | undefined)=>{
+    if(_id){
+      dispatch(grantRole(_id))
+    }
+   }
  
     return (
 
@@ -65,13 +69,8 @@ const UserOrders = () => {
               <TableCell align="center"> {user.email}</TableCell>
               <TableCell align="center"> 
               <InputLabel variant="standard" htmlFor="user-role">
-            <NativeSelect defaultValue={"User"} inputProps={{
-              name:"role",
-              id:'user-role'
-            }}>
-              <option >User</option>
-              <option>Admin</option>
-            </NativeSelect>
+              <TableCell align="center"> <Button variant="outlined" size="small" 
+                           onClick={()=> handelAdmin(user._id)}>Make As Admin</Button></TableCell>
             </InputLabel>
             </TableCell>
                  <TableCell>
@@ -80,7 +79,7 @@ const UserOrders = () => {
                         onClick={()=> handelDelete(user._id)} >Remove User</Button>*/}
 
                          <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>}
-                           onClick={()=> handelDelete(user._id)}>Remove</Button></TableCell>
+                           onClick={()=> handelDelete(user._id)}></Button></TableCell>
                            </TableCell> 
             </TableRow>
           ))}

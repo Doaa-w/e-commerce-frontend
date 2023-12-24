@@ -18,8 +18,8 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories' , a
         const response = await axios.post('http://localhost:5050/api/categories',{name:name})
         return response.data.payload
         })
-        export const updateCategories = async (slug:string) => {
-          const response = await axios.put(`http://localhost:5050/api/categories/${slug}`)
+        export const updateCategories = async (slug:string ,categoryData:Partial<Category>) => {
+          const response = await axios.put(`http://localhost:5050/api/categories/${slug}` ,{name:categoryData.name})
           return response.data.payload
           }
         

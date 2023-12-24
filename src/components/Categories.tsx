@@ -20,12 +20,18 @@ import Card from '@mui/material/Card';
 
 const categories = () => {
 
-    const {categories }= useSelector((state:RootState) =>
+    const {categories  }= useSelector((state:RootState) =>
 state.categoriesR );
     const dispatch =useDispatch<AppDispatch> ();
-    // const [categortName ,setCategoryName]=useState('')
-    // const [categortslug ,setCategoryslug]=useState('')
-    // const [isEidCategory ,setIsEidCategory]=useState(false)
+
+    // const [isFormOpen,setIsFormOpen]=useState(false)
+    // const [categoryName ,setCategoryName] = useState ({
+    //   name:category.name
+    // })
+
+    // const handelFormOpen=()=>{
+    //     setIsFormOpen(!isFormOpen)
+    // }
 
     useEffect(() => {
      dispatch(fetchCategories())
@@ -38,11 +44,7 @@ state.categoriesR );
       } catch (error) {
         console.log(error)
       }
-    // const  handelEdit =(slug:string , name :string )=>{
-    //   isEidCategory(true)
-    //   setCategoryName(name)
-    //   setCategoryslug(slug)
-    // }
+  
   
 }
     return (
@@ -62,8 +64,10 @@ state.categoriesR );
                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                    >
                      <TableCell align="left"> {category.name}</TableCell>
-                     <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>} onClick={()=> handelDelete(category.name)}>Remove</Button></TableCell>
-                     {/* <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>} onClick={()=> handelEdit(category.name , category.slug)}>Remove</Button></TableCell> */}
+                     <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>} 
+                     onClick={()=> handelDelete(category.name)}></Button></TableCell>
+                     {/* <TableCell align="center"> <Button variant="outlined" size="small" 
+                      onClick={()=> handelEdit(category.name , category.slug)}>Edit</Button></TableCell> */}
                   </TableRow>
                             ))}
                             

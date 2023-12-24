@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import {  UsersState } from '../../../Types'
+import {  User, UsersState } from '../../../Types'
 
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
@@ -14,10 +14,10 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
       const response = await axios.delete(`http://localhost:5050/api/Users/${_id}`)
       return response.data.payload
       }
-      // export const updateTheUser =  async ( user:object) => {
-      //   const response = await axios.put('http://localhost:5050/api/Users/',user)
-      //   return response.data.payload
-      //   }
+      export const updateTheUser =  async ( slug:string ,userData:Partial<User>) => {
+        const response = await axios.put(`http://localhost:5050/api/Users/${ slug}`,{first_name: userData.first_name})
+        return response.data.payload
+        }
       export const registeredUser= async (user:object)=>{
         const response = await axios.post('http://localhost:5050/api/users/register',user)
         console.log('reducer', registeredUser)
@@ -35,6 +35,13 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
           return response.data.payload
           console.log(response.data)
           })
+
+          export const grantRole = createAsyncThunk('users/grantRole' , async (id:string) => {
+            const response = await axios.put(`http://localhost:5050/api/users/role/${id}`)
+            return id
+            console.log(response.data.payload)
+            
+            })
 
     const data = localStorage.getItem('loginData') !== null ? 
     JSON.parse(String(localStorage.getItem('loginData'))) :[]
@@ -124,6 +131,13 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
       userData:state.userData
     }))
 
+   })
+   .addCase(grantRole.fulfilled,(state,action)=>{
+    const foundUser=state.users.find((user)=> user._id==action.payload)
+    if(foundUser){
+      foundUser.isAdmin= true
+    }
+    state.isLoading=false
    })
   } 
 });

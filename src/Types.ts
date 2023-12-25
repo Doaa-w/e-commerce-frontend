@@ -43,7 +43,7 @@ export type OrdersState= {
   }
   
   export type Order ={
-    id : number
+    _id : number
     productId: number
     userId: number
     purchasedAt: number

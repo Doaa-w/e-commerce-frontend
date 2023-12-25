@@ -6,8 +6,8 @@ import {OrdersState } from '../../../Types'
 
 
 export const fetchOrders = createAsyncThunk('orders/fetchOrders' , async () => {
-    const response = await api.get('/mock/e-commerce/orders.json')
-    return response.data
+    const response = await api.get('http://localhost:5050/api/orders')
+    return response.data.payload
     })
     const initialState :OrdersState = {
       orders: [],

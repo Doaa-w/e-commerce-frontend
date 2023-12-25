@@ -22,7 +22,7 @@ const UserProfile = ()=>{
     const [user ,setUser] = useState ({
         first_name: userData?.first_name
         })
-
+console.log("your",user)
     const handelFormOpen=()=>{
         setIsFormOpen(!isFormOpen)
     }
@@ -30,12 +30,16 @@ const UserProfile = ()=>{
     const handelChange =(event:ChangeEvent<HTMLInputElement>) => {
         setUser((prevUser)=>{
             return{...prevUser, [event.target.name]:event.target.value}
+
          }) 
         }
         const handelSubmit= async (event:FormEvent)=>{
             event.preventDefault() 
-            // const updateUserDate ={slug: userData?.slug, ...user} 
-            // await dispatch(updateTheUser(user))
+            //const updateUserDate ={slug: userData?.slug , ...user} 
+            console.log("dispatch",user)
+            updateTheUser(userData?._id ,{first_name: user?.first_name})
+        //    await  dispatch (userData(user))
+           
         }
 
     return(
@@ -44,7 +48,7 @@ const UserProfile = ()=>{
            <AccountCircleOutlined color='primary' sx={{fontSize:120}}/>
            <div className='flex flex-col'> 
         <Typography gutterBottom variant="h6" component="div">
-                  Name : {`${userData?.first_name}  ${userData?.last_name} `}
+                  Name : {`${user?.first_name}  ${userData?.last_name} `}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
                   Email:  {`${userData?.email}` }

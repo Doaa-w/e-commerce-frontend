@@ -44,15 +44,15 @@ const Orders = () => {
       <Table sx={{ minWidth: 200 }} aria-label="orders table">
         <TableHead>
           <TableRow>
-            <TableCell  align="center"> user Id</TableCell>
-            <TableCell align="center" >product Id </TableCell>
-            <TableCell  align="center">purchased Date</TableCell>
+            <TableCell  align="center"> User Id</TableCell>
+            <TableCell align="center" >Product Id </TableCell>
+            <TableCell  align="center">Purchased Date</TableCell>
             </TableRow>
         </TableHead>
         <TableBody>
         {orders.length >0 && orders.map((order) =>  (
             <TableRow
-              key={order.id}
+              key={order._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="center"> {order.userId}</TableCell>

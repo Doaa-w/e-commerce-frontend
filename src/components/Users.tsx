@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../redux/store";
 import {  deleteUsers, fetchUsers, grantRole } from "../redux/slices/products/UserSlice";
-import AdminSideBar from "./AdminSideBar";
+import AdminSideBar from "./AdminSideBar"; 
+
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 import { Button, InputLabel } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -31,6 +34,7 @@ const UserOrders = () => {
     const handelDelete= async (_id:string)=>{
         try {
           const respones = await deleteUsers(_id)
+          toast.info("You have successflly deleted a User ")
           dispatch(fetchUsers())
         } catch (error) {
           console.log(error)
@@ -39,9 +43,10 @@ const UserOrders = () => {
    const handelAdmin = async(_id:string | undefined)=>{
     if(_id){
       dispatch(grantRole(_id))
+    toast.warn("You Gave Administration To A User ") 
     }
    }
- 
+   
     return (
 
          <div className="flex flex-wrap">
@@ -54,7 +59,7 @@ const UserOrders = () => {
           <TableRow>
             <TableCell  align="center"> User Name </TableCell>
             <TableCell align="center" > User E-mail </TableCell>
-            <TableCell align="center" > User Role </TableCell>
+            <TableCell align="left" > User Role </TableCell>
             <TableCell align="center" >  </TableCell>
             </TableRow>
         </TableHead>
@@ -75,7 +80,7 @@ const UserOrders = () => {
             </TableCell>
                  <TableCell>
                          <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>}
-                           onClick={()=> handelDelete(user._id)}></Button></TableCell>
+                           onClick={()=> handelDelete(user._id) }></Button></TableCell>
                            </TableCell> 
             </TableRow>
           ))}
@@ -83,6 +88,7 @@ const UserOrders = () => {
       </Table>
        </TableContainer>
        </div>
+       <ToastContainer position="top-right"/>
          </div>
   
           

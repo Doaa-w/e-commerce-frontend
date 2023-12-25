@@ -5,9 +5,12 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 
 import { AppDispatch, RootState } from "../redux/store"
-import { fetchUsers, userLogIn } from "../redux/slices/products/UserSlice"
+import {  userLogIn } from "../redux/slices/products/UserSlice"
 
-import { Alert, Button, Container, Input } from "@mui/material"
+import { Button, Container, Input } from "@mui/material"
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+
 
 
 export const Login = ({pathName= ''}:{pathName:string;}) =>{
@@ -39,20 +42,11 @@ const handelSubmit= async (event:FormEvent)=>{
        console.log(error) 
     }
     
-
-    // const [emailError ,setEmailNamError]=useState('')
-    // const [passwoedError ,setPasswordNamError]=useState('')
-
-    // if(user.email.length<2){
-    //     setEmailNamError('E-mail must be more that 6 characTers')
-    //     return
-    //   }
-    //   if(user.password.length <4){
-    //     setPasswordNamError('Password must be more that 4 characTers')
-    //     return
-    //   }
    
 }
+const notify=()=>{
+    toast.success("You have successflly Logged In ,Welcome Back ")   
+  }
 return(
     
     
@@ -61,12 +55,11 @@ return(
         <form onSubmit={handelSubmit} className="flex p-4 justify-center ">
         <Container maxWidth="sm" className="mb-10"> 
             <Input placeholder="email"  type='email' name="email" onChange={handelOnChange} required className="mb-12"/><br/>
-            {/* <p className="text-red-500">{emailError}</p> */}
             <Input type='password' placeholder="password" name="password"  onChange={handelOnChange}  required className="mb-12"/><br/>
-            {/* <p className="text-red-500">{passwoedError}</p> */}
-            <Button type="submit" variant="contained" size="small" >Log In</Button>
+            <Button type="submit" variant="contained" size="small" onClick={notify}>Log In</Button>
                  </Container>
         </form>  
+        <ToastContainer position="top-right"/>
     </div>
 )
 

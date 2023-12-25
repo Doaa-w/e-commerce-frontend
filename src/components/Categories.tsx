@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
 import {useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import { AppDispatch, RootState } from "../redux/store";
 
 import {  deletecategory, fetchCategories } from "../redux/slices/products/CategorySlice";
@@ -14,7 +15,6 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Card from '@mui/material/Card';
 
@@ -24,15 +24,6 @@ const categories = () => {
 state.categoriesR );
     const dispatch =useDispatch<AppDispatch> ();
 
-    // const [isFormOpen,setIsFormOpen]=useState(false)
-    // const [categoryName ,setCategoryName] = useState ({
-    //   name:category.name
-    // })
-
-    // const handelFormOpen=()=>{
-    //     setIsFormOpen(!isFormOpen)
-    // }
-
     useEffect(() => {
      dispatch(fetchCategories())
     },[dispatch]); 
@@ -40,6 +31,7 @@ state.categoriesR );
      const handelDelete= async (slug:string)=>{
       try {
         const respones = await deletecategory(slug)
+        toast.info("You have successflly deleted a Category ")
         dispatch(fetchCategories())
       } catch (error) {
         console.log(error)
@@ -66,8 +58,6 @@ state.categoriesR );
                      <TableCell align="left"> {category.name}</TableCell>
                      <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>} 
                      onClick={()=> handelDelete(category.name)}></Button></TableCell>
-                     {/* <TableCell align="center"> <Button variant="outlined" size="small" 
-                      onClick={()=> handelEdit(category.name , category.slug)}>Edit</Button></TableCell> */}
                   </TableRow>
                             ))}
                             
@@ -75,6 +65,7 @@ state.categoriesR );
                        </Table>
                       </TableContainer>
                            </div>
+                           <ToastContainer position="top-right"/>
                            </div> 
     )
 

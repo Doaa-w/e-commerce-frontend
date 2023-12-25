@@ -19,7 +19,7 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
         }
       export const registeredUser= async (user:object)=>{
         const response = await axios.post('http://localhost:5050/api/users/register',user)
-        console.log('reducer', registeredUser)
+        console.log(response.data)
         return response.data.payload
       }
       export const userLogIn = createAsyncThunk('users/userLogIn' , async (user:object) => {

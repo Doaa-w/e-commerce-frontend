@@ -1,14 +1,16 @@
 /* eslint-disable prettier/prettier */
-import {useState ,ChangeEvent ,FormEvent, useEffect} from "react";
+import {useState ,ChangeEvent ,FormEvent} from "react";
 import { useDispatch } from 'react-redux';
 
 import { AppDispatch } from '../redux/store';
-import { addUser, fetchUsers, registeredUser } from '../redux/slices/products/UserSlice';
+import { registeredUser } from '../redux/slices/products/UserSlice';
 
 import Input from '@mui/material/Input';
 import { Button} from "@mui/material";
 import Typography from '@mui/material/Typography';
 import { useNavigate } from "react-router-dom";
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const Register = () =>{
@@ -24,9 +26,6 @@ const Register = () =>{
       address :'',
     })
 
-    // useEffect(()=>{
-    //   dispatch(fetchUsers())
-    // },[])
  console.log(user)
     const handelChange = (event:ChangeEvent<HTMLInputElement>) =>{
        setUser((prevUser)=> {
@@ -42,7 +41,7 @@ const Register = () =>{
 
     const handelSubmit =  (event:FormEvent)=>{
       event.preventDefault()
-     
+          
 
       if(user.first_name.length <2){
         setFirst_nameError('First Name must be more that 5 characters')
@@ -69,12 +68,13 @@ const Register = () =>{
         return
       }
       registeredUser(user)
-     console.log('re',registeredUser)
      console.log(user)
-      //  dispatch(fetchUsers())
-       
+    //  
        navigate('/login')
     }
+  const notify=()=>{
+    toast.success(" Check your email to activate your account")   
+  }
   
  return (
   <div>
@@ -82,7 +82,7 @@ const Register = () =>{
           
     <div className='flex justify-center '>
           
-     <form className=' p-12 'onSubmit={handelSubmit} >
+     <form className=' p-12  'onSubmit={handelSubmit} >
     <Typography gutterBottom variant="h4" component="div" className="mb-10 text-blue-600 ">Please Provid :</Typography>
     <Input placeholder="first Name" type='text' name="first_name" value={user.first_name} onChange={handelChange} required className="mb-4" />
     <p className="text-red-500">{first_nameError}</p>
@@ -97,10 +97,11 @@ const Register = () =>{
     <Input type='number' placeholder="phone" name="phone" value={user.phone} onChange={handelChange}  required className="mb-4"  />
     <p className="text-red-500">{phoneError}</p>
 
-    <Button type='submit' variant="contained" size="small"  >Register</Button>
+    <Button type='submit' variant="contained" size="small" onClick={notify}  >Register </Button> 
    
     </form>
     </div>
+    <ToastContainer position="top-right"/>
     </div>
 
 )

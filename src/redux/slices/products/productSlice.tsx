@@ -45,13 +45,7 @@ export const productsReducer = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    // findProduct: (state , action)=>{
-    //   const id = action.payload
-    //   const foundProduct = state.products.find((product)=>product._id === id)
-    //   if(foundProduct){
-    //     state.SingleProduct = foundProduct
-    //   }
-    // },
+  
     searchProduct:(state , action) =>{
       state.searchTerm = action.payload
     },

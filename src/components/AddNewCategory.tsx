@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { useDispatch } from 'react-redux'
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 import { createCategories } from '../redux/slices/products/CategorySlice'
 import { AppDispatch } from '../redux/store'
@@ -19,6 +21,7 @@ export function AddNewCategory() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     dispatch(createCategories(category))
+    toast.info("You have successflly created a Category ")
     setCategory('') 
   }
     const inputStyle =
@@ -31,13 +34,11 @@ export function AddNewCategory() {
         <input type="text" name="name" id="name"
           value={category}
           onChange={handleChange}
-          className={inputStyle} required />
-              {/* <Button variant="outlined" size="small" startIcon={<SendIcon/>} type="submit"> Add Category</Button>  */}
-              
+          className={inputStyle} required />              
       </div>
       <Button variant="outlined" size="small" startIcon={<SendIcon/>} type="submit"> Create Category</Button>
     </form> 
-
+    <ToastContainer position="top-right"/>
     </div>
   )
 }

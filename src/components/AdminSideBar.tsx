@@ -22,9 +22,9 @@ const AdminSideBar = () =>{
     return (
         
             <div className="AdminSideBar flex">
-              <aside className='h-hvh pl-0 float-left bg-slate-100 p-32   items-center justify-center'> 
+              <aside className='h-hvh pl-0 float-left bg-slate-100 p-32 items-center justify-center'> 
                  <BadgeIcon color='primary' sx={{ fontSize:70}}/> 
-                  <p className='font-bold '>{userData?.first_name}</p>
+                  <p className='font-bold '>Admin : {userData?.first_name}</p>
           <ul className='mt-16 space-y-6 '>
             <li> <Link to='/dashboard/Orders'>Orders</Link>   </li>
              <li> <Link to='/dashboard/Users'>Users</Link>    </li>

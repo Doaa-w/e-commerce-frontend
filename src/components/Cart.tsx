@@ -2,7 +2,10 @@
 
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../redux/store"
-import { Button, List, ListSubheader, Typography } from "@mui/material";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+
+import { Button, List, Typography } from "@mui/material";
 import { removeAllCart, removeFromCart } from "../redux/slices/products/cartSlice";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -12,9 +15,12 @@ const Cart =()=>{
     
     const handelRemoveFromCart =(_id:string)=>{
         dispatch(removeFromCart(_id))
+        toast.success("Product Removed From Cart ")
+
     }
     const handelRemoveAllCart =()=>{
         dispatch(removeAllCart())
+        toast.success("Remove All Products From Cart ")
     }
 
     const totalPrice = ()=>{

@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { useEffect ,useState } from "react";
 import React, { ChangeEvent } from 'react'
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch ,RootState } from "../redux/store"
@@ -37,6 +39,7 @@ const Products = ()=>{
       }
       const handelAddCart=(product: Product)=>{
         console.log(product)
+        toast.success("Product Added To Cart ")
         dispatch(addToCart(product))
       }
          const theProducts =searchTerm?products.filter((product)=> 

@@ -24,6 +24,15 @@ const categories = () => {
 state.categoriesR );
     const dispatch =useDispatch<AppDispatch> ();
 
+    // const [isFormOpen,setIsFormOpen]=useState(false)
+    // const [categoryName ,setCategoryName] = useState ({
+    //   name:category.name
+    // })
+
+    // const handelFormOpen=()=>{
+    //     setIsFormOpen(!isFormOpen)
+    // }
+
     useEffect(() => {
      dispatch(fetchCategories())
     },[dispatch]); 
@@ -58,6 +67,8 @@ state.categoriesR );
                      <TableCell align="left"> {category.name}</TableCell>
                      <TableCell align="center"> <Button variant="outlined" size="small" startIcon={<DeleteIcon/>} 
                      onClick={()=> handelDelete(category.name)}></Button></TableCell>
+                     {/* <TableCell align="center"> <Button variant="outlined" size="small" 
+                      onClick={()=> handelEdit(category.name , category.slug)}>Edit</Button></TableCell> */}
                   </TableRow>
                             ))}
                             

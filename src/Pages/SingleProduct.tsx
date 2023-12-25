@@ -2,10 +2,12 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {useParams } from "react-router-dom"
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 import { AppDispatch ,RootState } from "../redux/store"
 
-import {  fetchProducts, fetchSingleProducts } from "../redux/slices/products/ProductSlice"
+import { fetchSingleProducts } from "../redux/slices/products/ProductSlice"
 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {IconButton } from "@mui/material";
@@ -19,7 +21,7 @@ import { addToCart } from "../redux/slices/products/cartSlice"
 const SingleProduct =() =>{
     
     const { _id }= useParams()
-    const {SingleProduct, isLoading ,error }=useSelector((state:RootState)=>state.productsR);
+    const {SingleProduct}=useSelector((state:RootState)=>state.productsR);
     const dispatch =useDispatch<AppDispatch> ();
 ///
     useEffect(()=>{
@@ -29,6 +31,7 @@ const SingleProduct =() =>{
 
        const handelAddCart=(product: Product)=>{
         console.log(product)
+        toast.success("Product Added To Cart ")
         dispatch(addToCart(product))
       }
 

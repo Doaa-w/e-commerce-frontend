@@ -33,12 +33,14 @@ console.log("your",user)
 
          }) 
         }
-        const handelSubmit= async (event:FormEvent)=>{
+        const handelSubmit=  (event:FormEvent)=>{
             event.preventDefault() 
             //const updateUserDate ={slug: userData?.slug , ...user} 
-            console.log("dispatch",user)
-            updateTheUser(userData?._id ,{first_name: user?.first_name})
-        //    await  dispatch (userData(user))
+            console.log("dispatch",userData)
+             updateTheUser(user)
+             dispatch (fetchUsers()) 
+        // userData?._id ,{first_name: user?.first_name}
+
            
         }
 

@@ -13,10 +13,10 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers' , async () => {
       const response = await axios.delete(`http://localhost:5050/api/Users/${_id}`)
       return response.data.payload
       }
-      export const updateTheUser =  async ( _id:string|undefined ,userData:Partial<User>) => {
-        const response = await axios.put(`http://localhost:5050/api/users/${ _id}`,
-        {first_name: userData.first_name})
-        return response.data.payload
+      export const updateTheUser =  async (userData:Partial<User>) => {
+        const response = await axios.put(`http://localhost:5050/api/users/${ userData._id}`,
+        userData)
+        return userData._id
         }
       export const registeredUser= async (user:object)=>{
         const response = await axios.post('http://localhost:5050/api/users/register',user)
